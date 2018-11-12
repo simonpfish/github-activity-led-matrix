@@ -1,1 +1,1 @@
-# github-activity-led-matrix
+# Github Activity LED Matrix
