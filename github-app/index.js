@@ -2,13 +2,25 @@ module.exports = app => {
   // Your code here
   app.log('Yay, the app was loaded!')
 
-  app.on('*', async context => {
-    console.log(context)
+  app.on('installation', async context => {
+    const account = context.payload.installation.account
+    console.log(account)
+    if (account.type == 'Organization') {
+      const result = await context.github.orgs.createHook({
+        org: account.login,
+        name: 'web',
+        config: {
+          url: process.env.WEBHOOK_PROXY_URL,
+          content_type: 'json',
+          secret: process.env.WEBHOOK_SECRET,
+          events: ['pull_request', 'push']
+        }
+      })
+      console.log(result)
+    }
   })
 
-  // For more information on building apps:
-  // https://probot.github.io/docs/
-
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
+  app.on('push', async context => {
+    console.log(context)
+  })
 }
