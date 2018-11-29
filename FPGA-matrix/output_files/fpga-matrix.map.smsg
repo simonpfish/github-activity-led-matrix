@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at fpga_matrix.sv(4): object "latch" differs only in case from object "LATCH" in the same scope File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 4

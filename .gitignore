@@ -59,3 +59,14 @@ typings/
 
 # next.js build output
 .next
+
+# Verilog
+db
+greybox_tmp
+incremental_db
+simulation
+testbench
+timing
+
+#MacOS
+.DS_Store

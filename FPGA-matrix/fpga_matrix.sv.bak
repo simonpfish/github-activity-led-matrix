@@ -1,0 +1,30 @@
+module fpga_matrix(input logic clk,
+           output logic R0, 
+           output logic [3:0] row_address,
+           output logic outclk, latch, eo );
+           
+
+logic [5:0] count;
+logic [31:0] RArray;
+assign outclk = clk;
+assign RArray = 32'hFFFFFFFF;
+
+always_ff @(posedge clk) begin
+  count <= count + 1;
+
+	if (count < 32) begin
+		R0 <= RArray[count];
+  end else if (count == 33)
+    eo <= 1;
+  else if (count == 34)
+    row_address <= row_address + 1;
+  else if (count == 35)
+    latch <= 1;
+  else if (count == 36) begin
+    latch <= 0;
+    eo <= 0;
+    count <= 0;
+  end
+end
+  
+endmodule
