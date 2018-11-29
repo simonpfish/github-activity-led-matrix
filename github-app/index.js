@@ -1,5 +1,8 @@
+// index.js
+// Main server code for GitHub App that listens to user's actions
+// Maddie Zug & Simon Posada Fishman
+
 module.exports = app => {
-  // Your code here
   app.log('Yay, the app was loaded!')
 
   app.on('installation', async context => {

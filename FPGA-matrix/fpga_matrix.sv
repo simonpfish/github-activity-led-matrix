@@ -1,3 +1,7 @@
+// fpga_matrix.sv
+// Driver for a 32x32 Adafruit LED Matrix 
+// Maddie Zug & Simon Posada Fishman
+
 module fpga_matrix(input logic clk,
            output logic R0, G0, B0, R1, G1, B1,
            output logic [3:0] row_address,
@@ -5,9 +9,6 @@ module fpga_matrix(input logic clk,
 
   logic [9:0] adr0, adr1;
   logic we, R_wd, G_wd, B_wd;
-
-  assign adr0 = (row_address * 32) + shift_count;
-  assign adr1 = adr0 + 512;
 
   ram R_mem(clk, we, adr0, adr1, R_wd, R0, R1);
   ram G_mem(clk, we, adr0, adr1, G_wd, G0, G1);
@@ -42,7 +43,8 @@ module fpga_matrix(input logic clk,
   assign outclk = (state == SHIFT_1);
   assign eo = (state == BLANK) || (state == LATCH);
   assign latch = (state == LATCH);
-
+  assign adr0 = (row_address * 32) + shift_count;
+  assign adr1 = adr0 + 512;
 
 endmodule
 
