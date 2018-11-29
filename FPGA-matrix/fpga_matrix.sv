@@ -1,30 +1,25 @@
 module fpga_matrix(input logic clk,
-           output logic R0, R1, G0, G1, B0, B1,
+           output logic R0, G0, B0, R1, G1, B1,
            output logic [3:0] row_address,
            output logic outclk, latch, eo );
-           
 
-  logic [31:0] RArray, GArray, BArray;
-  
-  assign RArray = 32'hFFF000FF;
-  assign GArray = 32'hFFF00000;
-  assign BArray = 32'h000FFF00;
+  logic [9:0] adr0, adr1;
+  logic we, R_wd, G_wd, B_wd;
 
-  typedef enum logic [2:0] {SHIFT_1, SHIFT_0, BLANK, LATCH, DISPLAY} statetype;
+  assign adr0 = (row_address * 32) + shift_count;
+  assign adr1 = adr0 + 512;
+
+  ram R_mem(clk, we, adr0, adr1, R_wd, R0, R1);
+  ram G_mem(clk, we, adr0, adr1, G_wd, G0, G1);
+  ram B_mem(clk, we, adr0, adr1, B_wd, B0, B1);
+
+  typedef enum logic [2:0] {SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
   statetype state, nextstate;
 
   logic [4:0] shift_count;
 
   always_ff @(posedge clk) begin
     state <= nextstate;
-
-    R0 <= RArray[shift_count];
-    G0 <= GArray[shift_count];
-    B0 <= BArray[shift_count];
-
-    R1 <= RArray[shift_count];
-    G1 <= GArray[shift_count];
-    B1 <= BArray[shift_count];
 
     if (state == SHIFT_1) shift_count <= shift_count + 1;
     if (state == LATCH) row_address <= row_address + 1;
@@ -48,5 +43,27 @@ module fpga_matrix(input logic clk,
   assign eo = (state == BLANK) || (state == LATCH);
   assign latch = (state == LATCH);
 
+
+endmodule
+
+module ram #(parameter N = 10, M = 1) 
+            (input logic clk, 
+            input logic we, 
+            input logic [N-1:0] adr_0, 
+            input logic [N-1:0] adr_1, 
+            input logic [M-1:0] din, 
+            output logic [M-1:0] dout_0,
+            output logic [M-1:0] dout_1); 
+  
+  logic [M-1:0] mem [2**N-1:0]; 
+
+  initial
+      $readmemh("memfile.dat",mem);
+
+  always_ff @(posedge clk) 
+    if (we) mem [adr_0] <= din; 
+  
+  assign dout_0 = mem[adr_0]; 
+  assign dout_1 = mem[adr_1]; 
 
 endmodule
