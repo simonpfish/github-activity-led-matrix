@@ -26,4 +26,8 @@ module.exports = app => {
   app.on('push', async context => {
     console.log(context)
   })
+
+  app.on('pull_request', async context => {
+    console.log(context)
+  })
 }
