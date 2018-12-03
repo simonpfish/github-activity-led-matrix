@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Wed Nov 28 18:12:25 2018
+Analysis & Synthesis Status : Successful - Mon Dec 03 11:33:09 2018
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : fpga-matrix
 Top-level Entity Name : fpga_matrix
 Family : Cyclone IV E
-Total logic elements : 22
-    Total combinational functions : 20
-    Dedicated logic registers : 14
-Total registers : 14
-Total pins : 14
+Total logic elements : 42
+    Total combinational functions : 40
+    Dedicated logic registers : 31
+Total registers : 31
+Total pins : 28
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
