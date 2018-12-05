@@ -1,5 +1,5 @@
 EDA Netlist Writer report for fpga-matrix
-Mon Dec 03 11:33:20 2018
+Wed Dec 05 12:15:45 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Dec 03 11:33:20 2018 ;
+; EDA Netlist Writer Status ; Successful - Wed Dec 05 12:15:45 2018 ;
 ; Revision Name             ; fpga-matrix                           ;
 ; Top-level Entity Name     ; fpga_matrix                           ;
 ; Family                    ; Cyclone IV E                          ;
@@ -88,7 +88,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Mon Dec 03 11:33:19 2018
+    Info: Processing started: Wed Dec 05 12:15:44 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off fpga-matrix -c fpga-matrix
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file fpga-matrix_8_1200mv_85c_slow.svo in folder "C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/simulation/modelsim/" for EDA simulation tool
@@ -100,8 +100,8 @@ Info (204019): Generated file fpga-matrix_8_1200mv_0c_v_slow.sdo in folder "C:/U
 Info (204019): Generated file fpga-matrix_min_1200mv_0c_v_fast.sdo in folder "C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file fpga-matrix_v.sdo in folder "C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4660 megabytes
-    Info: Processing ended: Mon Dec 03 11:33:20 2018
+    Info: Peak virtual memory: 4661 megabytes
+    Info: Processing ended: Wed Dec 05 12:15:45 2018
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

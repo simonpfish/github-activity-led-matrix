@@ -4,24 +4,24 @@
 
 module fpga_matrix(input logic clk, we, R_in, G_in, B_in,
            input logic [9:0] adr_in,
-           output logic [2:0] rgb_a, rgb_b,
+           output logic R0, G0, B0, R1, G1, B1,
            output logic [3:0] row_address,
            output logic outclk, latch, eo );
 
-  logic [2:0] row_a [31:0];
-  logic [2:0] row_b [31:0];
-  logic read_ab_toggle;
+  logic [9:0] adr0, adr1;
+  logic [2:0] out0, out1;
 
-  logic [9:0] adr_out, base_adr_out;
-  logic [2:0] d_out;
-  logic [2:0] d_in;
+  ram mem(clk, we, adr_in, adr0, adr1, in, out0, out1);
 
-  ram mem(clk, we, adr_in[8:0], adr_out, d_in, d_out);
+  assign R0 = out0[0];
+  assign G0 = out0[1];
+  assign B0 = out0[2];
 
-  typedef enum logic [3:0] {READ_A, READ_B, NEXT_ADR, 
-                            SHIFT_0, SHIFT_1, 
-                            BLANK, LATCH, DISPLAY} statetype;
+  assign R1 = out1[0];
+  assign G1 = out1[1];
+  assign B1 = out1[2];
 
+  typedef enum logic [2:0] {SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
   statetype state, nextstate;
 
   logic [4:0] shift_count;
@@ -35,33 +35,17 @@ module fpga_matrix(input logic clk, we, R_in, G_in, B_in,
       state <= nextstate;
       delay <= nextdelay;
 
-      if (state == SHIFT_1 || state == NEXT_ADR) shift_count <= shift_count + 1;
+      if (state == SHIFT_1) shift_count <= shift_count + 1;
       if (state == LATCH) row_address <= row_address + 1;
-      
-      if (state == READ_A) begin
-        read_ab_toggle <= 1;
-        row_b[shift_count] <= d_out;
-      end
-      
-      if (state == READ_B) begin
-        read_ab_toggle <= 0;
-        row_a[shift_count] <= d_out;
-      end
     end
   end
 
   // State transition logic
   always_comb
     case (state)
-      READ_A: nextstate <= READ_B;
-      READ_B: nextstate <= NEXT_ADR;
-      NEXT_ADR: if (shift_count == 0) nextstate <= SHIFT_1;
-					      else nextstate <= READ_B;
-      
       SHIFT_1: nextstate <= SHIFT_0;
       SHIFT_0: if (shift_count == 0) nextstate <= BLANK;
-          else nextstate <= SHIFT_1;
-      
+					     else nextstate <= SHIFT_1;
       BLANK:   nextstate <= LATCH;
       LATCH:   nextstate <= DISPLAY;
       DISPLAY: nextstate <= SHIFT_1;
@@ -86,16 +70,8 @@ module fpga_matrix(input logic clk, we, R_in, G_in, B_in,
   assign eo = (state == BLANK) || (state == LATCH);
   assign latch = (state == LATCH);
   assign next_row_address = row_address + 1;
-  assign base_adr_out = (next_row_address * 32) + shift_count;
-
-  always_comb
-    if(read_ab_toggle)
-      adr_out <= base_adr_out;
-    else
-      adr_out <= base_adr_out + 512;
-
-  assign rgb_a = row_a[shift_count];
-  assign rgb_b = row_b[shift_count];
+  assign adr0 = (next_row_address * 32) + shift_count;
+  assign adr1 = adr0 + 512; 
 
 endmodule
 
@@ -103,9 +79,11 @@ module ram #(parameter N = 10, M = 3)
             (input logic clk, 
             input logic we, 
             input logic [N-1:0] adr_in,
-            input logic [N-1:0] adr_out, 
-            input logic [M-1:0] d_in, 
-            output logic [M-1:0] d_out); 
+            input logic [N-1:0] adr_0, 
+            input logic [N-1:0] adr_1, 
+            input logic [M-1:0] din, 
+            output logic [M-1:0] dout_0,
+            output logic [M-1:0] dout_1); 
   
   logic [M-1:0] mem [2**N-1:0]; 
 
@@ -113,8 +91,9 @@ module ram #(parameter N = 10, M = 3)
       $readmemh("memfile.dat",mem);
 
   always_ff @(posedge we) 
-      mem [adr_in] <= d_in;
+    if (we) mem [adr_in] <= din; 
   
-  assign d_out = mem[adr_out];
+  assign dout_0 = mem[adr_0]; 
+  assign dout_1 = mem[adr_1]; 
 
 endmodule

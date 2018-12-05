@@ -54,7 +54,6 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_34 -to outclk
-set_location_assignment PIN_1 -to R0
 set_location_assignment PIN_88 -to clk
 set_location_assignment PIN_38 -to eo
 set_location_assignment PIN_33 -to latch
@@ -62,9 +61,38 @@ set_location_assignment PIN_32 -to row_address[3]
 set_location_assignment PIN_28 -to row_address[0]
 set_location_assignment PIN_30 -to row_address[1]
 set_location_assignment PIN_31 -to row_address[2]
-set_location_assignment PIN_7 -to R1
-set_location_assignment PIN_10 -to G1
-set_location_assignment PIN_11 -to B1
-set_location_assignment PIN_3 -to B0
-set_location_assignment PIN_2 -to G0
+set_location_assignment PIN_54 -to R_in
+set_location_assignment PIN_55 -to G_in
+set_location_assignment PIN_58 -to B_in
+set_location_assignment PIN_59 -to we
+set_location_assignment PIN_39 -to adr_in[9]
+set_location_assignment PIN_42 -to adr_in[8]
+set_location_assignment PIN_43 -to adr_in[7]
+set_location_assignment PIN_44 -to adr_in[6]
+set_location_assignment PIN_46 -to adr_in[5]
+set_location_assignment PIN_49 -to adr_in[4]
+set_location_assignment PIN_50 -to adr_in[3]
+set_location_assignment PIN_51 -to adr_in[2]
+set_location_assignment PIN_52 -to adr_in[1]
+set_location_assignment PIN_53 -to adr_in[0]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[0]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[1]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[3]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[4]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[6]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[7]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[2]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[5]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[8]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to adr_in[9]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to we
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to B_in
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to R_in
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to G_in
+set_location_assignment PIN_1 -to rgb_a[0]
+set_location_assignment PIN_2 -to rgb_a[1]
+set_location_assignment PIN_3 -to rgb_a[2]
+set_location_assignment PIN_7 -to rgb_b[0]
+set_location_assignment PIN_10 -to rgb_b[1]
+set_location_assignment PIN_11 -to rgb_b[2]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
