@@ -29,18 +29,18 @@ class Matrix():
       else: self.rgb_out[i].off()
 
     self.we_out.on()
-    sleep(0.5)
+    sleep(0.01)
     self.we_out.off()
 
 
 if __name__ == "__main__":
   m = Matrix()
 
-  sleep(0.5)
-  m.setPixel(1, '111')
-  sleep(0.5)
-  m.setPixel(2, '011')
-  sleep(0.5)
-  m.setPixel(3, '111')
+  for i in range(32 * 32):
+    m.setPixel(i, '011')
+
+  for i in range(32 * 32):
+    m.setPixel(i, '000')
+
   while True:
     pass

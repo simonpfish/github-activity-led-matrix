@@ -9,12 +9,12 @@ module fpga_matrix(input logic clk, we,
            output logic [3:0] row_address,
            output logic outclk, latch, eo );
 
-  logic [9:0] adr_out, base_adr_out;
+  logic [9:0] adr_out;
   logic [2:0] d_out;
 
   ram mem(clk, we, adr_in[8:0], adr_out, rgb_in, d_out);
 
-  typedef enum logic [3:0] {SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
+  typedef enum logic [2:0] {READ_A, READ_B, SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
 
   statetype state, nextstate;
 
@@ -29,17 +29,32 @@ module fpga_matrix(input logic clk, we,
       state <= nextstate;
       delay <= nextdelay;
 
-      if (state == SHIFT_1) shift_count <= shift_count + 1;
-      if (state == LATCH) row_address <= row_address + 1;
+      case (state)
+        SHIFT_1: shift_count <= shift_count + 1;
+        LATCH: row_address <= row_address + 1;
+        READ_A: begin 
+          adr_out[9] <= 1;
+          rgb_a <= d_out;
+        end
+
+        READ_B: begin
+          adr_out[9] <= 0;
+          rgb_b <= d_out;
+        end
+      endcase
+
     end
   end
 
   // State transition logic
   always_comb
     case (state)
+      READ_A: nextstate <= READ_B;
+      READ_B: nextstate <= SHIFT_1;
+
       SHIFT_1: nextstate <= SHIFT_0;
       SHIFT_0: if (shift_count == 0) nextstate <= BLANK;
-          else nextstate <= SHIFT_1;
+               else nextstate <= READ_A;
       
       BLANK:   nextstate <= LATCH;
       LATCH:   nextstate <= DISPLAY;
@@ -65,10 +80,7 @@ module fpga_matrix(input logic clk, we,
   assign eo = (state == BLANK) || (state == LATCH);
   assign latch = (state == LATCH);
   assign next_row_address = row_address + 1;
-  assign adr_out = (next_row_address * 32) + shift_count;
-
-  assign rgb_a = d_out;
-  assign rgb_b = d_out;
+  assign adr_out[8:0] = (next_row_address * 32) + shift_count;
 
 endmodule
 

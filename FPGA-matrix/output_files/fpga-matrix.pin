@@ -121,11 +121,11 @@ adr_in[3]                    : 50        : input  : 2.5 V             :         
 adr_in[2]                    : 51        : input  : 2.5 V             :         : 3         : Y              
 adr_in[1]                    : 52        : input  : 2.5 V             :         : 3         : Y              
 adr_in[0]                    : 53        : input  : 2.5 V             :         : 3         : Y              
-R_in                         : 54        : input  : 2.5 V             :         : 4         : Y              
-G_in                         : 55        : input  : 2.5 V             :         : 4         : Y              
+rgb_in[0]                    : 54        : input  : 2.5 V             :         : 4         : Y              
+rgb_in[1]                    : 55        : input  : 2.5 V             :         : 4         : Y              
 VCCIO4                       : 56        : power  :                   : 2.5V    : 4         :                
 GND                          : 57        : gnd    :                   :         :           :                
-B_in                         : 58        : input  : 2.5 V             :         : 4         : Y              
+rgb_in[2]                    : 58        : input  : 2.5 V             :         : 4         : Y              
 we                           : 59        : input  : 2.5 V             :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 60        :        :                   :         : 4         :                
 VCCINT                       : 61        : power  :                   : 1.2V    :           :                
