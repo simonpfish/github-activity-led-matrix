@@ -5,7 +5,6 @@ address_pins = [18, 23, 24, 25, 8, 7, 12, 16, 20, 21]
 rgb_pins = [6, 13, 19]
 we_pin = 26
 
-
 class Matrix():
 
   def __init__(self):
