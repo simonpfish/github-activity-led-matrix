@@ -1,5 +1,6 @@
 import imageio
 import numpy as numpy
+from matrix import Matrix
 
 frame_queue = []
 
@@ -31,3 +32,12 @@ for i in range(1, len(frames)):
   queue_frame(
       frames[i],
       lambda row, col: any(frames[i][row][col] != frames[i - 1][row][col]))
+
+
+if __name__ == '__main__':
+  m = Matrix()
+  while(not empty(frame_queue)):
+    new_frame = frame_queue.pop(0)
+    for pixel in new_frame:
+      m.setPixel(pixel[0],''.join(pixel[1:]))
+
