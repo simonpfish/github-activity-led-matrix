@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
   matrixInit();
 
   for (size_t i = 0; i < 32 * 32; i++) {
-    setPixel(i, 1);
+    setPixel(i, 0);
   }
 
   return 0;

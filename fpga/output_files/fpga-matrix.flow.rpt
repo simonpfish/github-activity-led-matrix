@@ -1,5 +1,5 @@
 Flow report for fpga-matrix
-Sun Dec 09 09:52:06 2018
+Sun Dec 09 10:25:09 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Dec 09 09:52:06 2018       ;
+; Flow Status                        ; Successful - Sun Dec 09 10:25:09 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; fpga-matrix                                 ;
 ; Top-level Entity Name              ; fpga_matrix                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 45 / 6,272 ( < 1 % )                        ;
-;     Total combinational functions  ; 41 / 6,272 ( < 1 % )                        ;
-;     Dedicated logic registers      ; 31 / 6,272 ( < 1 % )                        ;
-; Total registers                    ; 31                                          ;
+; Total logic elements               ; 49 / 6,272 ( < 1 % )                        ;
+;     Total combinational functions  ; 43 / 6,272 ( < 1 % )                        ;
+;     Dedicated logic registers      ; 32 / 6,272 ( < 1 % )                        ;
+; Total registers                    ; 32                                          ;
 ; Total pins                         ; 28 / 92 ( 30 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 6,144 / 276,480 ( 2 % )                     ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/09/2018 09:51:36 ;
+; Start date & time ; 12/09/2018 10:24:49 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fpga-matrix         ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 22759552393937.154437789614620         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 22759552393937.154437988918920         ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
@@ -94,12 +94,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4795 MB             ; 00:00:25                           ;
-; Fitter               ; 00:00:08     ; 1.0                     ; 5535 MB             ; 00:00:05                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4689 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4771 MB             ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4657 MB             ; 00:00:01                           ;
-; Total                ; 00:00:25     ; --                      ; --                  ; 00:00:34                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4793 MB             ; 00:00:23                           ;
+; Fitter               ; 00:00:03     ; 1.0                     ; 5531 MB             ; 00:00:04                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4691 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4770 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4657 MB             ; 00:00:01                           ;
+; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:30                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

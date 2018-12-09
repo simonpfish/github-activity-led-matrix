@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fpga-matrix
-Sun Dec 09 09:51:48 2018
+Sun Dec 09 10:24:59 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -54,15 +54,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Dec 09 09:51:48 2018       ;
+; Analysis & Synthesis Status        ; Successful - Sun Dec 09 10:24:59 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; fpga-matrix                                 ;
 ; Top-level Entity Name              ; fpga_matrix                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 43                                          ;
-;     Total combinational functions  ; 41                                          ;
-;     Dedicated logic registers      ; 31                                          ;
-; Total registers                    ; 31                                          ;
+; Total logic elements               ; 46                                          ;
+;     Total combinational functions  ; 43                                          ;
+;     Dedicated logic registers      ; 32                                          ;
+; Total registers                    ; 32                                          ;
 ; Total pins                         ; 28                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 6,144                                       ;
@@ -200,20 +200,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 43        ;
+; Estimated Total logic elements              ; 46        ;
 ;                                             ;           ;
-; Total combinational functions               ; 41        ;
+; Total combinational functions               ; 43        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 8         ;
-;     -- 3 input functions                    ; 4         ;
-;     -- <=2 input functions                  ; 29        ;
+;     -- 4 input functions                    ; 9         ;
+;     -- 3 input functions                    ; 6         ;
+;     -- <=2 input functions                  ; 28        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 22        ;
+;     -- normal mode                          ; 24        ;
 ;     -- arithmetic mode                      ; 19        ;
 ;                                             ;           ;
-; Total registers                             ; 31        ;
-;     -- Dedicated logic registers            ; 31        ;
+; Total registers                             ; 32        ;
+;     -- Dedicated logic registers            ; 32        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 28        ;
@@ -222,9 +222,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 37        ;
-; Total fan-out                               ; 380       ;
-; Average fan-out                             ; 2.84      ;
+; Maximum fan-out                             ; 38        ;
+; Total fan-out                               ; 391       ;
+; Average fan-out                             ; 2.85      ;
 +---------------------------------------------+-----------+
 
 
@@ -233,7 +233,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                      ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+-----------------+--------------+
-; |fpga_matrix                              ; 41 (41)             ; 31 (31)                   ; 6144        ; 0            ; 0       ; 0         ; 28   ; 0            ; |fpga_matrix                                                             ; fpga_matrix     ; work         ;
+; |fpga_matrix                              ; 43 (43)             ; 32 (32)                   ; 6144        ; 0            ; 0       ; 0         ; 28   ; 0            ; |fpga_matrix                                                             ; fpga_matrix     ; work         ;
 ;    |ram:mem|                              ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem                                                     ; ram             ; work         ;
 ;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
 ;          |altsyncram_fih1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated ; altsyncram_fih1 ; work         ;
@@ -254,17 +254,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------+
-; State Machine - |fpga_matrix|state                                                        ;
-+---------------+-------------+-------------+---------------+---------------+---------------+
-; Name          ; state.LATCH ; state.BLANK ; state.SHIFT_1 ; state.SHIFT_0 ; state.DISPLAY ;
-+---------------+-------------+-------------+---------------+---------------+---------------+
-; state.SHIFT_0 ; 0           ; 0           ; 0             ; 0             ; 0             ;
-; state.SHIFT_1 ; 0           ; 0           ; 1             ; 1             ; 0             ;
-; state.BLANK   ; 0           ; 1           ; 0             ; 1             ; 0             ;
-; state.LATCH   ; 1           ; 0           ; 0             ; 1             ; 0             ;
-; state.DISPLAY ; 0           ; 0           ; 0             ; 1             ; 1             ;
-+---------------+-------------+-------------+---------------+---------------+---------------+
++-----------------------------------------------------------------------------------------------------------+
+; State Machine - |fpga_matrix|state                                                                        ;
++---------------+---------------+-------------+---------------+-------------+---------------+---------------+
+; Name          ; state.DISPLAY ; state.LATCH ; state.SET_ROW ; state.BLANK ; state.SHIFT_1 ; state.SHIFT_0 ;
++---------------+---------------+-------------+---------------+-------------+---------------+---------------+
+; state.SHIFT_0 ; 0             ; 0           ; 0             ; 0           ; 0             ; 0             ;
+; state.SHIFT_1 ; 0             ; 0           ; 0             ; 0           ; 1             ; 1             ;
+; state.BLANK   ; 0             ; 0           ; 0             ; 1           ; 0             ; 1             ;
+; state.SET_ROW ; 0             ; 0           ; 1             ; 0           ; 0             ; 1             ;
+; state.LATCH   ; 0             ; 1           ; 0             ; 0           ; 0             ; 1             ;
+; state.DISPLAY ; 1             ; 0           ; 0             ; 0           ; 0             ; 1             ;
++---------------+---------------+-------------+---------------+-------------+---------------+---------------+
 
 
 +------------------------------------------------------------+
@@ -272,9 +273,10 @@ Encoding Type:  One-Hot
 +---------------------------------------+--------------------+
 ; Register name                         ; Reason for Removal ;
 +---------------------------------------+--------------------+
-; state~5                               ; Lost fanout        ;
 ; state~6                               ; Lost fanout        ;
-; Total Number of Removed Registers = 2 ;                    ;
+; state~7                               ; Lost fanout        ;
+; state~8                               ; Lost fanout        ;
+; Total Number of Removed Registers = 3 ;                    ;
 +---------------------------------------+--------------------+
 
 
@@ -283,12 +285,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 31    ;
+; Total registers                              ; 32    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 17    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 13    ;
+; Number of registers using Clock Enable       ; 14    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -500,24 +502,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 28                          ;
-; cycloneiii_ff         ; 31                          ;
-;     ENA               ; 13                          ;
+; cycloneiii_ff         ; 32                          ;
+;     ENA               ; 14                          ;
 ;     SLD               ; 17                          ;
 ;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 41                          ;
+; cycloneiii_lcell_comb ; 44                          ;
 ;     arith             ; 19                          ;
 ;         2 data inputs ; 18                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 22                          ;
+;     normal            ; 25                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 5                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 8                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 9                           ;
 ; cycloneiii_ram_block  ; 6                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 1.80                        ;
+; Average LUT depth     ; 1.92                        ;
 +-----------------------+-----------------------------+
 
 
@@ -526,7 +528,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -536,22 +538,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Dec 09 09:51:35 2018
+    Info: Processing started: Sun Dec 09 10:24:49 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fpga-matrix -c fpga-matrix
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file fpga_matrix.sv
     Info (12023): Found entity 1: fpga_matrix File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 5
-    Info (12023): Found entity 2: ram File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 70
+    Info (12023): Found entity 2: ram File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 74
 Info (12127): Elaborating entity "fpga_matrix" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(26): truncated value with size 32 to match size of target (17) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 26
 Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(32): truncated value with size 32 to match size of target (5) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 32
 Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(33): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 33
 Info (10264): Verilog HDL Case Statement information at fpga_matrix.sv(31): all case item expressions in this case statement are onehot File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 31
-Info (10264): Verilog HDL Case Statement information at fpga_matrix.sv(53): all case item expressions in this case statement are onehot File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 53
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(64): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 64
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(65): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 65
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(66): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 66
+Info (10264): Verilog HDL Case Statement information at fpga_matrix.sv(54): all case item expressions in this case statement are onehot File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(68): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 68
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(69): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 69
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(70): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 70
 Info (12128): Elaborating entity "ram" for hierarchy "ram:mem" File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 14
 Warning (10230): Verilog HDL assignment warning at memfile.dat(1): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 1
 Warning (10230): Verilog HDL assignment warning at memfile.dat(2): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 2
@@ -1649,20 +1651,20 @@ Info (12133): Instantiated megafunction "ram:mem|altsyncram:mem_rtl_1" with the 
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/fpga-matrix.ram0_ram_1d0cf.hdl.mif"
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/output_files/fpga-matrix.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 80 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 84 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 46 logic cells
+    Info (21061): Implemented 50 logic cells
     Info (21064): Implemented 6 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1033 warnings
-    Info: Peak virtual memory: 4795 megabytes
-    Info: Processing ended: Sun Dec 09 09:51:48 2018
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:25
+    Info: Peak virtual memory: 4793 megabytes
+    Info: Processing ended: Sun Dec 09 10:24:59 2018
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:23
 
 
 +------------------------------------------+

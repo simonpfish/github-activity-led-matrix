@@ -1,5 +1,5 @@
 Fitter report for fpga-matrix
-Sun Dec 09 09:51:57 2018
+Sun Dec 09 10:25:03 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -69,17 +69,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sun Dec 09 09:51:57 2018       ;
+; Fitter Status                      ; Successful - Sun Dec 09 10:25:03 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; fpga-matrix                                 ;
 ; Top-level Entity Name              ; fpga_matrix                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 45 / 6,272 ( < 1 % )                        ;
-;     Total combinational functions  ; 41 / 6,272 ( < 1 % )                        ;
-;     Dedicated logic registers      ; 31 / 6,272 ( < 1 % )                        ;
-; Total registers                    ; 31                                          ;
+; Total logic elements               ; 49 / 6,272 ( < 1 % )                        ;
+;     Total combinational functions  ; 43 / 6,272 ( < 1 % )                        ;
+;     Dedicated logic registers      ; 32 / 6,272 ( < 1 % )                        ;
+; Total registers                    ; 32                                          ;
 ; Total pins                         ; 28 / 92 ( 30 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 6,144 / 276,480 ( 2 % )                     ;
@@ -156,12 +156,12 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.01        ;
+; Average used               ; 1.02        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.3%      ;
+;     Processors 2-4         ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -170,7 +170,7 @@ refer to the applicable agreement for further details.
 +----------+----------------+--------------+------------+---------------+----------------+
 ; Name     ; Ignored Entity ; Ignored From ; Ignored To ; Ignored Value ; Ignored Source ;
 +----------+----------------+--------------+------------+---------------+----------------+
-; Location ;                ;              ; load       ; PIN_33        ; QSF Assignment ;
+; Location ;                ;              ; eo         ; PIN_38        ; QSF Assignment ;
 +----------+----------------+--------------+------------+---------------+----------------+
 
 
@@ -180,8 +180,8 @@ refer to the applicable agreement for further details.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 145 ) ; 0.00 % ( 0 / 145 )         ; 0.00 % ( 0 / 145 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 145 ) ; 0.00 % ( 0 / 145 )         ; 0.00 % ( 0 / 145 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 148 ) ; 0.00 % ( 0 / 148 )         ; 0.00 % ( 0 / 148 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 148 ) ; 0.00 % ( 0 / 148 )         ; 0.00 % ( 0 / 148 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -204,7 +204,7 @@ refer to the applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 135 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 138 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 10 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -220,23 +220,23 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Total logic elements                        ; 45 / 6,272 ( < 1 % )     ;
-;     -- Combinational with no register       ; 14                       ;
-;     -- Register only                        ; 4                        ;
-;     -- Combinational with a register        ; 27                       ;
+; Total logic elements                        ; 49 / 6,272 ( < 1 % )     ;
+;     -- Combinational with no register       ; 17                       ;
+;     -- Register only                        ; 6                        ;
+;     -- Combinational with a register        ; 26                       ;
 ;                                             ;                          ;
 ; Logic element usage by number of LUT inputs ;                          ;
-;     -- 4 input functions                    ; 8                        ;
-;     -- 3 input functions                    ; 4                        ;
-;     -- <=2 input functions                  ; 29                       ;
-;     -- Register only                        ; 4                        ;
+;     -- 4 input functions                    ; 9                        ;
+;     -- 3 input functions                    ; 6                        ;
+;     -- <=2 input functions                  ; 28                       ;
+;     -- Register only                        ; 6                        ;
 ;                                             ;                          ;
 ; Logic elements by mode                      ;                          ;
-;     -- normal mode                          ; 22                       ;
+;     -- normal mode                          ; 24                       ;
 ;     -- arithmetic mode                      ; 19                       ;
 ;                                             ;                          ;
-; Total registers*                            ; 31 / 6,684 ( < 1 % )     ;
-;     -- Dedicated logic registers            ; 31 / 6,272 ( < 1 % )     ;
+; Total registers*                            ; 32 / 6,684 ( < 1 % )     ;
+;     -- Dedicated logic registers            ; 32 / 6,272 ( < 1 % )     ;
 ;     -- I/O registers                        ; 0 / 412 ( 0 % )          ;
 ;                                             ;                          ;
 ; Total LABs:  partially or completely used   ; 4 / 392 ( 1 % )          ;
@@ -257,12 +257,12 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )            ;
 ; Oscillator blocks                           ; 0 / 1 ( 0 % )            ;
 ; Impedance control blocks                    ; 0 / 4 ( 0 % )            ;
-; Average interconnect usage (total/H/V)      ; 0.4% / 0.4% / 0.3%       ;
+; Average interconnect usage (total/H/V)      ; 0.4% / 0.5% / 0.4%       ;
 ; Peak interconnect usage (total/H/V)         ; 1.1% / 1.2% / 1.0%       ;
-; Maximum fan-out                             ; 33                       ;
-; Highest non-global fan-out                  ; 25                       ;
-; Total fan-out                               ; 304                      ;
-; Average fan-out                             ; 2.10                     ;
+; Maximum fan-out                             ; 34                       ;
+; Highest non-global fan-out                  ; 26                       ;
+; Total fan-out                               ; 317                      ;
+; Average fan-out                             ; 2.11                     ;
 +---------------------------------------------+--------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -275,23 +275,23 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 +---------------------------------------------+---------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                 ; Low                            ;
 ;                                             ;                     ;                                ;
-; Total logic elements                        ; 45 / 6272 ( < 1 % ) ; 0 / 6272 ( 0 % )               ;
-;     -- Combinational with no register       ; 14                  ; 0                              ;
-;     -- Register only                        ; 4                   ; 0                              ;
-;     -- Combinational with a register        ; 27                  ; 0                              ;
+; Total logic elements                        ; 49 / 6272 ( < 1 % ) ; 0 / 6272 ( 0 % )               ;
+;     -- Combinational with no register       ; 17                  ; 0                              ;
+;     -- Register only                        ; 6                   ; 0                              ;
+;     -- Combinational with a register        ; 26                  ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Logic element usage by number of LUT inputs ;                     ;                                ;
-;     -- 4 input functions                    ; 8                   ; 0                              ;
-;     -- 3 input functions                    ; 4                   ; 0                              ;
-;     -- <=2 input functions                  ; 29                  ; 0                              ;
-;     -- Register only                        ; 4                   ; 0                              ;
+;     -- 4 input functions                    ; 9                   ; 0                              ;
+;     -- 3 input functions                    ; 6                   ; 0                              ;
+;     -- <=2 input functions                  ; 28                  ; 0                              ;
+;     -- Register only                        ; 6                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Logic elements by mode                      ;                     ;                                ;
-;     -- normal mode                          ; 22                  ; 0                              ;
+;     -- normal mode                          ; 24                  ; 0                              ;
 ;     -- arithmetic mode                      ; 19                  ; 0                              ;
 ;                                             ;                     ;                                ;
-; Total registers                             ; 31                  ; 0                              ;
-;     -- Dedicated logic registers            ; 31 / 6272 ( < 1 % ) ; 0 / 6272 ( 0 % )               ;
+; Total registers                             ; 32                  ; 0                              ;
+;     -- Dedicated logic registers            ; 32 / 6272 ( < 1 % ) ; 0 / 6272 ( 0 % )               ;
 ;     -- I/O registers                        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Total LABs:  partially or completely used   ; 4 / 392 ( 1 % )     ; 0 / 392 ( 0 % )                ;
@@ -311,8 +311,8 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 ;     -- Registered Output Connections        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Internal Connections                        ;                     ;                                ;
-;     -- Total Connections                    ; 299                 ; 5                              ;
-;     -- Registered Connections               ; 88                  ; 0                              ;
+;     -- Total Connections                    ; 312                 ; 5                              ;
+;     -- Registered Connections               ; 93                  ; 0                              ;
 ;                                             ;                     ;                                ;
 ; External Connections                        ;                     ;                                ;
 ;     -- Top                                  ; 0                   ; 0                              ;
@@ -354,7 +354,7 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 ; adr_in[7] ; 43    ; 3        ; 5            ; 0            ; 21           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
 ; adr_in[8] ; 42    ; 3        ; 3            ; 0            ; 0            ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
 ; adr_in[9] ; 39    ; 3        ; 1            ; 0            ; 14           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
-; clk       ; 88    ; 5        ; 34           ; 12           ; 21           ; 33                    ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
+; clk       ; 88    ; 5        ; 34           ; 12           ; 21           ; 34                    ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
 ; rgb_in[0] ; 54    ; 4        ; 18           ; 0            ; 21           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
 ; rgb_in[1] ; 55    ; 4        ; 18           ; 0            ; 14           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
 ; rgb_in[2] ; 58    ; 4        ; 21           ; 0            ; 7            ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; On           ; 2.5 V        ; --                        ; User                 ; no        ;
@@ -367,8 +367,8 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 +----------------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name           ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +----------------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
-; eo             ; 38    ; 3        ; 1            ; 0            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; latch          ; 33    ; 2        ; 0            ; 6            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
+; blank          ; 38    ; 3        ; 1            ; 0            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
+; load           ; 33    ; 2        ; 0            ; 6            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; outclk         ; 34    ; 2        ; 0            ; 5            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; rgb_a[0]       ; 1     ; 1        ; 0            ; 23           ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; rgb_a[1]       ; 2     ; 1        ; 0            ; 23           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
@@ -457,12 +457,12 @@ The pin-out file can be found in C:/Users/mzug/OneDrive - Pomona College/e155/gi
 ; 30       ; 34         ; 2        ; row_address[1]                                            ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; 31       ; 36         ; 2        ; row_address[2]                                            ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; 32       ; 39         ; 2        ; row_address[3]                                            ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
-; 33       ; 40         ; 2        ; latch                                                     ; output ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 33       ; 40         ; 2        ; load                                                      ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; 34       ; 41         ; 2        ; outclk                                                    ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; 35       ;            ; --       ; VCCA1                                                     ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
 ; 36       ;            ;          ; GNDA1                                                     ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; 37       ;            ;          ; VCCD_PLL1                                                 ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
-; 38       ; 45         ; 3        ; eo                                                        ; output ; 2.5 V        ;         ; Column I/O ; Y               ; no       ; Off          ;
+; 38       ; 45         ; 3        ; blank                                                     ; output ; 2.5 V        ;         ; Column I/O ; N               ; no       ; Off          ;
 ; 39       ; 46         ; 3        ; adr_in[9]                                                 ; input  ; 2.5 V        ;         ; Column I/O ; Y               ; no       ; On           ;
 ; 40       ;            ; 3        ; VCCIO3                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
 ; 41       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -591,8 +591,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; row_address[2] ; Incomplete set of assignments ;
 ; row_address[3] ; Incomplete set of assignments ;
 ; outclk         ; Incomplete set of assignments ;
-; latch          ; Incomplete set of assignments ;
-; eo             ; Incomplete set of assignments ;
+; load           ; Incomplete set of assignments ;
+; blank          ; Incomplete set of assignments ;
 ; we             ; Incomplete set of assignments ;
 ; clk            ; Incomplete set of assignments ;
 ; rgb_in[0]      ; Incomplete set of assignments ;
@@ -608,7 +608,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; adr_in[9]      ; Incomplete set of assignments ;
 ; rgb_in[1]      ; Incomplete set of assignments ;
 ; rgb_in[2]      ; Incomplete set of assignments ;
-; latch          ; Missing location assignment   ;
+; blank          ; Missing location assignment   ;
 +----------------+-------------------------------+
 
 
@@ -617,7 +617,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+--------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                                      ; Entity Name     ; Library Name ;
 +-------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+--------------------------------------------------------------------------+-----------------+--------------+
-; |fpga_matrix                              ; 45 (45)     ; 31 (31)                   ; 0 (0)         ; 6144        ; 2    ; 0            ; 0       ; 0         ; 28   ; 0            ; 14 (14)      ; 4 (4)             ; 27 (27)          ; |fpga_matrix                                                             ; fpga_matrix     ; work         ;
+; |fpga_matrix                              ; 49 (49)     ; 32 (32)                   ; 0 (0)         ; 6144        ; 2    ; 0            ; 0       ; 0         ; 28   ; 0            ; 17 (17)      ; 6 (6)             ; 26 (26)          ; |fpga_matrix                                                             ; fpga_matrix     ; work         ;
 ;    |ram:mem|                              ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 6144        ; 2    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |fpga_matrix|ram:mem                                                     ; ram             ; work         ;
 ;       |altsyncram:mem_rtl_0|              ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 3072        ; 1    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
 ;          |altsyncram_fih1:auto_generated| ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 3072        ; 1    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated ; altsyncram_fih1 ; work         ;
@@ -643,8 +643,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; row_address[2] ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; row_address[3] ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; outclk         ; Output   ; --            ; --            ; --                    ; --  ; --   ;
-; latch          ; Output   ; --            ; --            ; --                    ; --  ; --   ;
-; eo             ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; load           ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; blank          ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; we             ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; clk            ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; rgb_in[0]      ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
@@ -714,17 +714,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------------+-------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                          ;
-+------------------+-------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
-; Name             ; Location          ; Fan-Out ; Usage                    ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+------------------+-------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
-; LessThan0~5      ; LCCOMB_X10_Y4_N2  ; 25      ; Clock enable, Sync. load ; no     ; --                   ; --               ; --                        ;
-; clk              ; PIN_88            ; 33      ; Clock                    ; yes    ; Global Clock         ; GCLK8            ; --                        ;
-; row_address[0]~1 ; LCCOMB_X9_Y4_N24  ; 4       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; shift_count[0]~8 ; LCCOMB_X11_Y4_N28 ; 4       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; we               ; PIN_59            ; 2       ; Clock                    ; no     ; --                   ; --               ; --                        ;
-+------------------+-------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                         ;
++------------------+------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
+; Name             ; Location         ; Fan-Out ; Usage                    ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++------------------+------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
+; LessThan0~5      ; LCCOMB_X5_Y5_N2  ; 26      ; Clock enable, Sync. load ; no     ; --                   ; --               ; --                        ;
+; clk              ; PIN_88           ; 34      ; Clock                    ; yes    ; Global Clock         ; GCLK8            ; --                        ;
+; row_address[0]~1 ; LCCOMB_X4_Y5_N4  ; 4       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; shift_count[0]~8 ; LCCOMB_X6_Y5_N30 ; 4       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; we               ; PIN_59           ; 2       ; Clock                    ; no     ; --                   ; --               ; --                        ;
++------------------+------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------+
@@ -732,7 +732,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 ; Name ; Location ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; clk  ; PIN_88   ; 33      ; 7                                    ; Global Clock         ; GCLK8            ; --                        ;
+; clk  ; PIN_88   ; 34      ; 5                                    ; Global Clock         ; GCLK8            ; --                        ;
 +------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
@@ -1024,21 +1024,21 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 +-----------------------+-----------------------+
 ; Routing Resource Type ; Usage                 ;
 +-----------------------+-----------------------+
-; Block interconnects   ; 85 / 32,401 ( < 1 % ) ;
+; Block interconnects   ; 92 / 32,401 ( < 1 % ) ;
 ; C16 interconnects     ; 10 / 1,326 ( < 1 % )  ;
-; C4 interconnects      ; 59 / 21,816 ( < 1 % ) ;
-; Direct links          ; 14 / 32,401 ( < 1 % ) ;
+; C4 interconnects      ; 71 / 21,816 ( < 1 % ) ;
+; Direct links          ; 8 / 32,401 ( < 1 % )  ;
 ; Global clocks         ; 1 / 10 ( 10 % )       ;
-; Local interconnects   ; 36 / 10,320 ( < 1 % ) ;
-; R24 interconnects     ; 10 / 1,289 ( < 1 % )  ;
-; R4 interconnects      ; 82 / 28,186 ( < 1 % ) ;
+; Local interconnects   ; 41 / 10,320 ( < 1 % ) ;
+; R24 interconnects     ; 12 / 1,289 ( < 1 % )  ;
+; R4 interconnects      ; 90 / 28,186 ( < 1 % ) ;
 +-----------------------+-----------------------+
 
 
 +---------------------------------------------------------------------------+
 ; LAB Logic Elements                                                        ;
 +---------------------------------------------+-----------------------------+
-; Number of Logic Elements  (Average = 11.25) ; Number of LABs  (Total = 4) ;
+; Number of Logic Elements  (Average = 12.25) ; Number of LABs  (Total = 4) ;
 +---------------------------------------------+-----------------------------+
 ; 1                                           ; 0                           ;
 ; 2                                           ; 0                           ;
@@ -1051,28 +1051,28 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 ; 9                                           ; 0                           ;
 ; 10                                          ; 1                           ;
 ; 11                                          ; 0                           ;
-; 12                                          ; 1                           ;
+; 12                                          ; 0                           ;
 ; 13                                          ; 0                           ;
 ; 14                                          ; 0                           ;
 ; 15                                          ; 0                           ;
-; 16                                          ; 1                           ;
+; 16                                          ; 2                           ;
 +---------------------------------------------+-----------------------------+
 
 
 +------------------------------------------------------------------+
 ; LAB-wide Signals                                                 ;
 +------------------------------------+-----------------------------+
-; LAB-wide Signals  (Average = 1.25) ; Number of LABs  (Total = 4) ;
+; LAB-wide Signals  (Average = 1.50) ; Number of LABs  (Total = 4) ;
 +------------------------------------+-----------------------------+
 ; 1 Clock                            ; 4                           ;
-; 1 Sync. load                       ; 1                           ;
+; 1 Clock enable                     ; 2                           ;
 +------------------------------------+-----------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                        ;
 +----------------------------------------------+-----------------------------+
-; Number of Signals Sourced  (Average = 19.00) ; Number of LABs  (Total = 4) ;
+; Number of Signals Sourced  (Average = 20.25) ; Number of LABs  (Total = 4) ;
 +----------------------------------------------+-----------------------------+
 ; 0                                            ; 0                           ;
 ; 1                                            ; 0                           ;
@@ -1095,12 +1095,12 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 ; 18                                           ; 0                           ;
 ; 19                                           ; 0                           ;
 ; 20                                           ; 0                           ;
-; 21                                           ; 1                           ;
+; 21                                           ; 0                           ;
 ; 22                                           ; 0                           ;
 ; 23                                           ; 0                           ;
 ; 24                                           ; 0                           ;
 ; 25                                           ; 0                           ;
-; 26                                           ; 0                           ;
+; 26                                           ; 1                           ;
 ; 27                                           ; 0                           ;
 ; 28                                           ; 1                           ;
 +----------------------------------------------+-----------------------------+
@@ -1109,18 +1109,18 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 +-------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                       ;
 +-------------------------------------------------+-----------------------------+
-; Number of Signals Sourced Out  (Average = 5.75) ; Number of LABs  (Total = 4) ;
+; Number of Signals Sourced Out  (Average = 7.00) ; Number of LABs  (Total = 4) ;
 +-------------------------------------------------+-----------------------------+
 ; 0                                               ; 0                           ;
 ; 1                                               ; 0                           ;
 ; 2                                               ; 0                           ;
-; 3                                               ; 1                           ;
+; 3                                               ; 0                           ;
 ; 4                                               ; 1                           ;
-; 5                                               ; 0                           ;
-; 6                                               ; 1                           ;
+; 5                                               ; 1                           ;
+; 6                                               ; 0                           ;
 ; 7                                               ; 0                           ;
 ; 8                                               ; 0                           ;
-; 9                                               ; 0                           ;
+; 9                                               ; 1                           ;
 ; 10                                              ; 1                           ;
 +-------------------------------------------------+-----------------------------+
 
@@ -1128,18 +1128,21 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 +---------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                       ;
 +---------------------------------------------+-----------------------------+
-; Number of Distinct Inputs  (Average = 4.50) ; Number of LABs  (Total = 4) ;
+; Number of Distinct Inputs  (Average = 8.25) ; Number of LABs  (Total = 4) ;
 +---------------------------------------------+-----------------------------+
 ; 0                                           ; 0                           ;
 ; 1                                           ; 0                           ;
 ; 2                                           ; 0                           ;
-; 3                                           ; 3                           ;
-; 4                                           ; 0                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 1                           ;
 ; 5                                           ; 0                           ;
 ; 6                                           ; 0                           ;
 ; 7                                           ; 0                           ;
-; 8                                           ; 0                           ;
+; 8                                           ; 1                           ;
 ; 9                                           ; 1                           ;
+; 10                                          ; 0                           ;
+; 11                                          ; 0                           ;
+; 12                                          ; 1                           ;
 +---------------------------------------------+-----------------------------+
 
 
@@ -1215,8 +1218,8 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 ; row_address[2]     ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; row_address[3]     ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; outclk             ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; latch              ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; eo                 ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; load               ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; blank              ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; we                 ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; clk                ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; rgb_in[0]          ; Pass         ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
@@ -1310,16 +1313,16 @@ Info (176214): Statistics of I/O pins that need to be placed that use the same V
 Info (176215): I/O bank details before I/O pin placement
     Info (176214): Statistics of I/O banks
         Info (176213): I/O bank number 1 does not use VREF pins and has 2.5V VCCIO pins. 10 total pin(s) used --  1 pins available
-        Info (176213): I/O bank number 2 does not use VREF pins and has 2.5V VCCIO pins. 5 total pin(s) used --  3 pins available
-        Info (176213): I/O bank number 3 does not use VREF pins and has 2.5V VCCIO pins. 11 total pin(s) used --  0 pins available
+        Info (176213): I/O bank number 2 does not use VREF pins and has 2.5V VCCIO pins. 6 total pin(s) used --  2 pins available
+        Info (176213): I/O bank number 3 does not use VREF pins and has undetermined VCCIO pins. 10 total pin(s) used --  1 pins available
         Info (176213): I/O bank number 4 does not use VREF pins and has undetermined VCCIO pins. 4 total pin(s) used --  10 pins available
         Info (176213): I/O bank number 5 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  12 pins available
         Info (176213): I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  9 pins available
         Info (176213): I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  13 pins available
         Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  12 pins available
 Warning (15705): Ignored locations or region assignments to the following nodes
-    Warning (15706): Node "load" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+    Warning (15706): Node "eo" is assigned to location or region, but does not exist in design
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:00
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -1341,9 +1344,9 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/output_files/fpga-matrix.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 5535 megabytes
-    Info: Processing ended: Sun Dec 09 09:51:58 2018
-    Info: Elapsed time: 00:00:09
+    Info: Peak virtual memory: 5531 megabytes
+    Info: Processing ended: Sun Dec 09 10:25:04 2018
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:05
 
 

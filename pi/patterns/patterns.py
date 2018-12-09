@@ -1,16 +1,24 @@
+import argparse
 import imageio
 import numpy as numpy
-from matrix import Matrix
-
-frame_queue = []
-
-frames = []
-for i in range(1, 7):
-  frame = imageio.imread('simon_pattern/Simon-' + str(i) + '.png.png')
-  frames.append(frame)
+import os
 
 
-def queue_frame(frame, conditional=lambda r, c: True):
+def load_frames(dirname):
+  frames = []
+
+  files = os.listdir(dirname)
+  files.sort()
+
+  for filename in files:
+    print(dirname + '/' + filename)
+    frame = imageio.imread(dirname + '/' + filename)
+    frames.append(frame)
+
+  return frames
+
+
+def get_pixels(frame, conditional=lambda r, c: True):
   pixel_queue = []
   for row in range(len(frame)):
     for col in range(len(frame[row])):
@@ -18,29 +26,46 @@ def queue_frame(frame, conditional=lambda r, c: True):
       r, g, b = [1 if bool(p) else 0 for p in pixel[0:3]]
       address = row * 32 + col
       if conditional(row, col):
-        pixel_queue.append((address, r, g, b))
+        pixel_queue.append((address, int('{}{}{}'.format(r, g, b), 2)))
 
-  frame_queue.append(pixel_queue)
+  return pixel_queue
 
 
-print('start q')
+def queue_directory(dirname):
+  frame_queue = []
 
-# First frame
-queue_frame(frames[0])
+  frames = load_frames(dirname)
+  # First frame
+  frame_queue.append(get_pixels(frames[0]))
 
-# Rest of frames
-for i in range(1, len(frames)):
-  queue_frame(
-      frames[i],
-      lambda row, col: any(frames[i][row][col] != frames[i - 1][row][col]))
+  # Rest of frames
+  for i in range(1, len(frames)):
+    frame_queue.append(
+        get_pixels(
+            frames[i],
+            lambda row, col: any(frames[i][row][col] != frames[i - 1][row][col])
+        ))
 
-print('end q')
+  return frame_queue
+
+
+def print_frame_queue(frame_queue):
+  for frame in frame_queue:
+    for pixel in frame:
+      print(pixel[0], pixel[1])
+
+    print('')
+
 
 if __name__ == '__main__':
-  m = Matrix()
-  from time import sleep
-  while True:
-    for frame in frame_queue:
-      for pixel in frame:
-        m.setPixel(pixel[0], pixel[1:])
-      sleep(0.5)
+  parser = argparse.ArgumentParser(
+      description='Generate frame queue from png files in a directory')
+  parser.add_argument(
+      'directory',
+      metavar='DIRECTORY',
+      type=str,
+      help='an integer for the accumulator')
+
+  args = parser.parse_args()
+  q = queue_directory(args.directory)
+  print_frame_queue(q)
