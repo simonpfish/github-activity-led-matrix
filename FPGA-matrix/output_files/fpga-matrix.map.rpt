@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fpga-matrix
-Wed Dec 05 12:25:44 2018
+Sun Dec 09 09:51:48 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -13,15 +13,22 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |fpga_matrix|state
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Parameter Settings for User Entity Instance: ram:mem
- 12. Port Connectivity Checks: "ram:mem"
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
- 16. Analysis & Synthesis Suppressed Messages
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |fpga_matrix|state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Source assignments for ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated
+ 14. Source assignments for ram:mem|altsyncram:mem_rtl_1|altsyncram_fih1:auto_generated
+ 15. Parameter Settings for User Entity Instance: ram:mem
+ 16. Parameter Settings for Inferred Entity Instance: ram:mem|altsyncram:mem_rtl_0
+ 17. Parameter Settings for Inferred Entity Instance: ram:mem|altsyncram:mem_rtl_1
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Port Connectivity Checks: "ram:mem"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+ 23. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -47,18 +54,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 05 12:25:44 2018       ;
+; Analysis & Synthesis Status        ; Successful - Sun Dec 09 09:51:48 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; fpga-matrix                                 ;
 ; Top-level Entity Name              ; fpga_matrix                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 3,153                                       ;
-;     Total combinational functions  ; 1,616                                       ;
-;     Dedicated logic registers      ; 1,567                                       ;
-; Total registers                    ; 1567                                        ;
+; Total logic elements               ; 43                                          ;
+;     Total combinational functions  ; 41                                          ;
+;     Dedicated logic registers      ; 31                                          ;
+; Total registers                    ; 31                                          ;
 ; Total pins                         ; 28                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
+; Total memory bits                  ; 6,144                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
@@ -163,63 +170,87 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processor 3            ;   0.0%      ;
-;     Processor 4            ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                       ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
-; fpga_matrix.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv ;         ;
-; memfile.dat                      ; yes             ; Auto-Found Unspecified File  ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat    ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                ;
++---------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path      ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                                              ; Library ;
++---------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------+
+; fpga_matrix.sv                        ; yes             ; User SystemVerilog HDL File                           ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv                        ;         ;
+; memfile.dat                           ; yes             ; Auto-Found Unspecified File                           ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat                           ;         ;
+; altsyncram.tdf                        ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf                                                     ;         ;
+; stratix_ram_block.inc                 ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                              ;         ;
+; lpm_mux.inc                           ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/lpm_mux.inc                                                        ;         ;
+; lpm_decode.inc                        ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/lpm_decode.inc                                                     ;         ;
+; aglobal180.inc                        ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/aglobal180.inc                                                     ;         ;
+; a_rdenreg.inc                         ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/a_rdenreg.inc                                                      ;         ;
+; altrom.inc                            ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altrom.inc                                                         ;         ;
+; altram.inc                            ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altram.inc                                                         ;         ;
+; altdpram.inc                          ; yes             ; Megafunction                                          ; f:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altdpram.inc                                                       ;         ;
+; db/altsyncram_fih1.tdf                ; yes             ; Auto-Generated Megafunction                           ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/db/altsyncram_fih1.tdf                ;         ;
+; db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ;         ;
++---------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 3,153    ;
-;                                             ;          ;
-; Total combinational functions               ; 1616     ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 1442     ;
-;     -- 3 input functions                    ; 13       ;
-;     -- <=2 input functions                  ; 161      ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 1597     ;
-;     -- arithmetic mode                      ; 19       ;
-;                                             ;          ;
-; Total registers                             ; 1567     ;
-;     -- Dedicated logic registers            ; 1567     ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 28       ;
-;                                             ;          ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; we~input ;
-; Maximum fan-out                             ; 1536     ;
-; Total fan-out                               ; 10880    ;
-; Average fan-out                             ; 3.36     ;
-+---------------------------------------------+----------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 43        ;
+;                                             ;           ;
+; Total combinational functions               ; 41        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 8         ;
+;     -- 3 input functions                    ; 4         ;
+;     -- <=2 input functions                  ; 29        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 22        ;
+;     -- arithmetic mode                      ; 19        ;
+;                                             ;           ;
+; Total registers                             ; 31        ;
+;     -- Dedicated logic registers            ; 31        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 28        ;
+; Total memory bits                           ; 6144      ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 37        ;
+; Total fan-out                               ; 380       ;
+; Average fan-out                             ; 2.84      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                       ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
-; |fpga_matrix               ; 1616 (46)           ; 1567 (31)                 ; 0           ; 0            ; 0       ; 0         ; 28   ; 0            ; |fpga_matrix         ; fpga_matrix ; work         ;
-;    |ram:mem|               ; 1570 (1570)         ; 1536 (1536)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem ; ram         ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                      ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+-----------------+--------------+
+; |fpga_matrix                              ; 41 (41)             ; 31 (31)                   ; 6144        ; 0            ; 0       ; 0         ; 28   ; 0            ; |fpga_matrix                                                             ; fpga_matrix     ; work         ;
+;    |ram:mem|                              ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem                                                     ; ram             ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_fih1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated ; altsyncram_fih1 ; work         ;
+;       |altsyncram:mem_rtl_1|              ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_1                                ; altsyncram      ; work         ;
+;          |altsyncram_fih1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpga_matrix|ram:mem|altsyncram:mem_rtl_1|altsyncram_fih1:auto_generated ; altsyncram_fih1 ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                            ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; Name                                                                   ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                   ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1024         ; 3            ; 1024         ; 3            ; 3072 ; db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ;
+; ram:mem|altsyncram:mem_rtl_1|altsyncram_fih1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1024         ; 3            ; 1024         ; 3            ; 3072 ; db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
 
 
 Encoding Type:  One-Hot
@@ -236,1552 +267,15 @@ Encoding Type:  One-Hot
 +---------------+-------------+-------------+---------------+---------------+---------------+
 
 
-+---------------------------------------------------------------+
-; Registers Removed During Synthesis                            ;
-+------------------------------------------+--------------------+
-; Register name                            ; Reason for Removal ;
-+------------------------------------------+--------------------+
-; state~5                                  ; Lost fanout        ;
-; state~6                                  ; Lost fanout        ;
-; state~8                                  ; Lost fanout        ;
-; ram:mem|mem~1536                         ; Lost fanout        ;
-; ram:mem|mem~1537                         ; Lost fanout        ;
-; ram:mem|mem~1538                         ; Lost fanout        ;
-; ram:mem|mem~1539                         ; Lost fanout        ;
-; ram:mem|mem~1540                         ; Lost fanout        ;
-; ram:mem|mem~1541                         ; Lost fanout        ;
-; ram:mem|mem~1542                         ; Lost fanout        ;
-; ram:mem|mem~1543                         ; Lost fanout        ;
-; ram:mem|mem~1544                         ; Lost fanout        ;
-; ram:mem|mem~1545                         ; Lost fanout        ;
-; ram:mem|mem~1546                         ; Lost fanout        ;
-; ram:mem|mem~1547                         ; Lost fanout        ;
-; ram:mem|mem~1548                         ; Lost fanout        ;
-; ram:mem|mem~1549                         ; Lost fanout        ;
-; ram:mem|mem~1550                         ; Lost fanout        ;
-; ram:mem|mem~1551                         ; Lost fanout        ;
-; ram:mem|mem~1552                         ; Lost fanout        ;
-; ram:mem|mem~1553                         ; Lost fanout        ;
-; ram:mem|mem~1554                         ; Lost fanout        ;
-; ram:mem|mem~1555                         ; Lost fanout        ;
-; ram:mem|mem~1556                         ; Lost fanout        ;
-; ram:mem|mem~1557                         ; Lost fanout        ;
-; ram:mem|mem~1558                         ; Lost fanout        ;
-; ram:mem|mem~1559                         ; Lost fanout        ;
-; ram:mem|mem~1560                         ; Lost fanout        ;
-; ram:mem|mem~1561                         ; Lost fanout        ;
-; ram:mem|mem~1562                         ; Lost fanout        ;
-; ram:mem|mem~1563                         ; Lost fanout        ;
-; ram:mem|mem~1564                         ; Lost fanout        ;
-; ram:mem|mem~1565                         ; Lost fanout        ;
-; ram:mem|mem~1566                         ; Lost fanout        ;
-; ram:mem|mem~1567                         ; Lost fanout        ;
-; ram:mem|mem~1568                         ; Lost fanout        ;
-; ram:mem|mem~1569                         ; Lost fanout        ;
-; ram:mem|mem~1570                         ; Lost fanout        ;
-; ram:mem|mem~1571                         ; Lost fanout        ;
-; ram:mem|mem~1572                         ; Lost fanout        ;
-; ram:mem|mem~1573                         ; Lost fanout        ;
-; ram:mem|mem~1574                         ; Lost fanout        ;
-; ram:mem|mem~1575                         ; Lost fanout        ;
-; ram:mem|mem~1576                         ; Lost fanout        ;
-; ram:mem|mem~1577                         ; Lost fanout        ;
-; ram:mem|mem~1578                         ; Lost fanout        ;
-; ram:mem|mem~1579                         ; Lost fanout        ;
-; ram:mem|mem~1580                         ; Lost fanout        ;
-; ram:mem|mem~1581                         ; Lost fanout        ;
-; ram:mem|mem~1582                         ; Lost fanout        ;
-; ram:mem|mem~1583                         ; Lost fanout        ;
-; ram:mem|mem~1584                         ; Lost fanout        ;
-; ram:mem|mem~1585                         ; Lost fanout        ;
-; ram:mem|mem~1586                         ; Lost fanout        ;
-; ram:mem|mem~1587                         ; Lost fanout        ;
-; ram:mem|mem~1588                         ; Lost fanout        ;
-; ram:mem|mem~1589                         ; Lost fanout        ;
-; ram:mem|mem~1590                         ; Lost fanout        ;
-; ram:mem|mem~1591                         ; Lost fanout        ;
-; ram:mem|mem~1592                         ; Lost fanout        ;
-; ram:mem|mem~1593                         ; Lost fanout        ;
-; ram:mem|mem~1594                         ; Lost fanout        ;
-; ram:mem|mem~1595                         ; Lost fanout        ;
-; ram:mem|mem~1596                         ; Lost fanout        ;
-; ram:mem|mem~1597                         ; Lost fanout        ;
-; ram:mem|mem~1598                         ; Lost fanout        ;
-; ram:mem|mem~1599                         ; Lost fanout        ;
-; ram:mem|mem~1600                         ; Lost fanout        ;
-; ram:mem|mem~1601                         ; Lost fanout        ;
-; ram:mem|mem~1602                         ; Lost fanout        ;
-; ram:mem|mem~1603                         ; Lost fanout        ;
-; ram:mem|mem~1604                         ; Lost fanout        ;
-; ram:mem|mem~1605                         ; Lost fanout        ;
-; ram:mem|mem~1606                         ; Lost fanout        ;
-; ram:mem|mem~1607                         ; Lost fanout        ;
-; ram:mem|mem~1608                         ; Lost fanout        ;
-; ram:mem|mem~1609                         ; Lost fanout        ;
-; ram:mem|mem~1610                         ; Lost fanout        ;
-; ram:mem|mem~1611                         ; Lost fanout        ;
-; ram:mem|mem~1612                         ; Lost fanout        ;
-; ram:mem|mem~1613                         ; Lost fanout        ;
-; ram:mem|mem~1614                         ; Lost fanout        ;
-; ram:mem|mem~1615                         ; Lost fanout        ;
-; ram:mem|mem~1616                         ; Lost fanout        ;
-; ram:mem|mem~1617                         ; Lost fanout        ;
-; ram:mem|mem~1618                         ; Lost fanout        ;
-; ram:mem|mem~1619                         ; Lost fanout        ;
-; ram:mem|mem~1620                         ; Lost fanout        ;
-; ram:mem|mem~1621                         ; Lost fanout        ;
-; ram:mem|mem~1622                         ; Lost fanout        ;
-; ram:mem|mem~1623                         ; Lost fanout        ;
-; ram:mem|mem~1624                         ; Lost fanout        ;
-; ram:mem|mem~1625                         ; Lost fanout        ;
-; ram:mem|mem~1626                         ; Lost fanout        ;
-; ram:mem|mem~1627                         ; Lost fanout        ;
-; ram:mem|mem~1628                         ; Lost fanout        ;
-; ram:mem|mem~1629                         ; Lost fanout        ;
-; ram:mem|mem~1630                         ; Lost fanout        ;
-; ram:mem|mem~1631                         ; Lost fanout        ;
-; ram:mem|mem~1632                         ; Lost fanout        ;
-; ram:mem|mem~1633                         ; Lost fanout        ;
-; ram:mem|mem~1634                         ; Lost fanout        ;
-; ram:mem|mem~1635                         ; Lost fanout        ;
-; ram:mem|mem~1636                         ; Lost fanout        ;
-; ram:mem|mem~1637                         ; Lost fanout        ;
-; ram:mem|mem~1638                         ; Lost fanout        ;
-; ram:mem|mem~1639                         ; Lost fanout        ;
-; ram:mem|mem~1640                         ; Lost fanout        ;
-; ram:mem|mem~1641                         ; Lost fanout        ;
-; ram:mem|mem~1642                         ; Lost fanout        ;
-; ram:mem|mem~1643                         ; Lost fanout        ;
-; ram:mem|mem~1644                         ; Lost fanout        ;
-; ram:mem|mem~1645                         ; Lost fanout        ;
-; ram:mem|mem~1646                         ; Lost fanout        ;
-; ram:mem|mem~1647                         ; Lost fanout        ;
-; ram:mem|mem~1648                         ; Lost fanout        ;
-; ram:mem|mem~1649                         ; Lost fanout        ;
-; ram:mem|mem~1650                         ; Lost fanout        ;
-; ram:mem|mem~1651                         ; Lost fanout        ;
-; ram:mem|mem~1652                         ; Lost fanout        ;
-; ram:mem|mem~1653                         ; Lost fanout        ;
-; ram:mem|mem~1654                         ; Lost fanout        ;
-; ram:mem|mem~1655                         ; Lost fanout        ;
-; ram:mem|mem~1656                         ; Lost fanout        ;
-; ram:mem|mem~1657                         ; Lost fanout        ;
-; ram:mem|mem~1658                         ; Lost fanout        ;
-; ram:mem|mem~1659                         ; Lost fanout        ;
-; ram:mem|mem~1660                         ; Lost fanout        ;
-; ram:mem|mem~1661                         ; Lost fanout        ;
-; ram:mem|mem~1662                         ; Lost fanout        ;
-; ram:mem|mem~1663                         ; Lost fanout        ;
-; ram:mem|mem~1664                         ; Lost fanout        ;
-; ram:mem|mem~1665                         ; Lost fanout        ;
-; ram:mem|mem~1666                         ; Lost fanout        ;
-; ram:mem|mem~1667                         ; Lost fanout        ;
-; ram:mem|mem~1668                         ; Lost fanout        ;
-; ram:mem|mem~1669                         ; Lost fanout        ;
-; ram:mem|mem~1670                         ; Lost fanout        ;
-; ram:mem|mem~1671                         ; Lost fanout        ;
-; ram:mem|mem~1672                         ; Lost fanout        ;
-; ram:mem|mem~1673                         ; Lost fanout        ;
-; ram:mem|mem~1674                         ; Lost fanout        ;
-; ram:mem|mem~1675                         ; Lost fanout        ;
-; ram:mem|mem~1676                         ; Lost fanout        ;
-; ram:mem|mem~1677                         ; Lost fanout        ;
-; ram:mem|mem~1678                         ; Lost fanout        ;
-; ram:mem|mem~1679                         ; Lost fanout        ;
-; ram:mem|mem~1680                         ; Lost fanout        ;
-; ram:mem|mem~1681                         ; Lost fanout        ;
-; ram:mem|mem~1682                         ; Lost fanout        ;
-; ram:mem|mem~1683                         ; Lost fanout        ;
-; ram:mem|mem~1684                         ; Lost fanout        ;
-; ram:mem|mem~1685                         ; Lost fanout        ;
-; ram:mem|mem~1686                         ; Lost fanout        ;
-; ram:mem|mem~1687                         ; Lost fanout        ;
-; ram:mem|mem~1688                         ; Lost fanout        ;
-; ram:mem|mem~1689                         ; Lost fanout        ;
-; ram:mem|mem~1690                         ; Lost fanout        ;
-; ram:mem|mem~1691                         ; Lost fanout        ;
-; ram:mem|mem~1692                         ; Lost fanout        ;
-; ram:mem|mem~1693                         ; Lost fanout        ;
-; ram:mem|mem~1694                         ; Lost fanout        ;
-; ram:mem|mem~1695                         ; Lost fanout        ;
-; ram:mem|mem~1696                         ; Lost fanout        ;
-; ram:mem|mem~1697                         ; Lost fanout        ;
-; ram:mem|mem~1698                         ; Lost fanout        ;
-; ram:mem|mem~1699                         ; Lost fanout        ;
-; ram:mem|mem~1700                         ; Lost fanout        ;
-; ram:mem|mem~1701                         ; Lost fanout        ;
-; ram:mem|mem~1702                         ; Lost fanout        ;
-; ram:mem|mem~1703                         ; Lost fanout        ;
-; ram:mem|mem~1704                         ; Lost fanout        ;
-; ram:mem|mem~1705                         ; Lost fanout        ;
-; ram:mem|mem~1706                         ; Lost fanout        ;
-; ram:mem|mem~1707                         ; Lost fanout        ;
-; ram:mem|mem~1708                         ; Lost fanout        ;
-; ram:mem|mem~1709                         ; Lost fanout        ;
-; ram:mem|mem~1710                         ; Lost fanout        ;
-; ram:mem|mem~1711                         ; Lost fanout        ;
-; ram:mem|mem~1712                         ; Lost fanout        ;
-; ram:mem|mem~1713                         ; Lost fanout        ;
-; ram:mem|mem~1714                         ; Lost fanout        ;
-; ram:mem|mem~1715                         ; Lost fanout        ;
-; ram:mem|mem~1716                         ; Lost fanout        ;
-; ram:mem|mem~1717                         ; Lost fanout        ;
-; ram:mem|mem~1718                         ; Lost fanout        ;
-; ram:mem|mem~1719                         ; Lost fanout        ;
-; ram:mem|mem~1720                         ; Lost fanout        ;
-; ram:mem|mem~1721                         ; Lost fanout        ;
-; ram:mem|mem~1722                         ; Lost fanout        ;
-; ram:mem|mem~1723                         ; Lost fanout        ;
-; ram:mem|mem~1724                         ; Lost fanout        ;
-; ram:mem|mem~1725                         ; Lost fanout        ;
-; ram:mem|mem~1726                         ; Lost fanout        ;
-; ram:mem|mem~1727                         ; Lost fanout        ;
-; ram:mem|mem~1728                         ; Lost fanout        ;
-; ram:mem|mem~1729                         ; Lost fanout        ;
-; ram:mem|mem~1730                         ; Lost fanout        ;
-; ram:mem|mem~1731                         ; Lost fanout        ;
-; ram:mem|mem~1732                         ; Lost fanout        ;
-; ram:mem|mem~1733                         ; Lost fanout        ;
-; ram:mem|mem~1734                         ; Lost fanout        ;
-; ram:mem|mem~1735                         ; Lost fanout        ;
-; ram:mem|mem~1736                         ; Lost fanout        ;
-; ram:mem|mem~1737                         ; Lost fanout        ;
-; ram:mem|mem~1738                         ; Lost fanout        ;
-; ram:mem|mem~1739                         ; Lost fanout        ;
-; ram:mem|mem~1740                         ; Lost fanout        ;
-; ram:mem|mem~1741                         ; Lost fanout        ;
-; ram:mem|mem~1742                         ; Lost fanout        ;
-; ram:mem|mem~1743                         ; Lost fanout        ;
-; ram:mem|mem~1744                         ; Lost fanout        ;
-; ram:mem|mem~1745                         ; Lost fanout        ;
-; ram:mem|mem~1746                         ; Lost fanout        ;
-; ram:mem|mem~1747                         ; Lost fanout        ;
-; ram:mem|mem~1748                         ; Lost fanout        ;
-; ram:mem|mem~1749                         ; Lost fanout        ;
-; ram:mem|mem~1750                         ; Lost fanout        ;
-; ram:mem|mem~1751                         ; Lost fanout        ;
-; ram:mem|mem~1752                         ; Lost fanout        ;
-; ram:mem|mem~1753                         ; Lost fanout        ;
-; ram:mem|mem~1754                         ; Lost fanout        ;
-; ram:mem|mem~1755                         ; Lost fanout        ;
-; ram:mem|mem~1756                         ; Lost fanout        ;
-; ram:mem|mem~1757                         ; Lost fanout        ;
-; ram:mem|mem~1758                         ; Lost fanout        ;
-; ram:mem|mem~1759                         ; Lost fanout        ;
-; ram:mem|mem~1760                         ; Lost fanout        ;
-; ram:mem|mem~1761                         ; Lost fanout        ;
-; ram:mem|mem~1762                         ; Lost fanout        ;
-; ram:mem|mem~1763                         ; Lost fanout        ;
-; ram:mem|mem~1764                         ; Lost fanout        ;
-; ram:mem|mem~1765                         ; Lost fanout        ;
-; ram:mem|mem~1766                         ; Lost fanout        ;
-; ram:mem|mem~1767                         ; Lost fanout        ;
-; ram:mem|mem~1768                         ; Lost fanout        ;
-; ram:mem|mem~1769                         ; Lost fanout        ;
-; ram:mem|mem~1770                         ; Lost fanout        ;
-; ram:mem|mem~1771                         ; Lost fanout        ;
-; ram:mem|mem~1772                         ; Lost fanout        ;
-; ram:mem|mem~1773                         ; Lost fanout        ;
-; ram:mem|mem~1774                         ; Lost fanout        ;
-; ram:mem|mem~1775                         ; Lost fanout        ;
-; ram:mem|mem~1776                         ; Lost fanout        ;
-; ram:mem|mem~1777                         ; Lost fanout        ;
-; ram:mem|mem~1778                         ; Lost fanout        ;
-; ram:mem|mem~1779                         ; Lost fanout        ;
-; ram:mem|mem~1780                         ; Lost fanout        ;
-; ram:mem|mem~1781                         ; Lost fanout        ;
-; ram:mem|mem~1782                         ; Lost fanout        ;
-; ram:mem|mem~1783                         ; Lost fanout        ;
-; ram:mem|mem~1784                         ; Lost fanout        ;
-; ram:mem|mem~1785                         ; Lost fanout        ;
-; ram:mem|mem~1786                         ; Lost fanout        ;
-; ram:mem|mem~1787                         ; Lost fanout        ;
-; ram:mem|mem~1788                         ; Lost fanout        ;
-; ram:mem|mem~1789                         ; Lost fanout        ;
-; ram:mem|mem~1790                         ; Lost fanout        ;
-; ram:mem|mem~1791                         ; Lost fanout        ;
-; ram:mem|mem~1792                         ; Lost fanout        ;
-; ram:mem|mem~1793                         ; Lost fanout        ;
-; ram:mem|mem~1794                         ; Lost fanout        ;
-; ram:mem|mem~1795                         ; Lost fanout        ;
-; ram:mem|mem~1796                         ; Lost fanout        ;
-; ram:mem|mem~1797                         ; Lost fanout        ;
-; ram:mem|mem~1798                         ; Lost fanout        ;
-; ram:mem|mem~1799                         ; Lost fanout        ;
-; ram:mem|mem~1800                         ; Lost fanout        ;
-; ram:mem|mem~1801                         ; Lost fanout        ;
-; ram:mem|mem~1802                         ; Lost fanout        ;
-; ram:mem|mem~1803                         ; Lost fanout        ;
-; ram:mem|mem~1804                         ; Lost fanout        ;
-; ram:mem|mem~1805                         ; Lost fanout        ;
-; ram:mem|mem~1806                         ; Lost fanout        ;
-; ram:mem|mem~1807                         ; Lost fanout        ;
-; ram:mem|mem~1808                         ; Lost fanout        ;
-; ram:mem|mem~1809                         ; Lost fanout        ;
-; ram:mem|mem~1810                         ; Lost fanout        ;
-; ram:mem|mem~1811                         ; Lost fanout        ;
-; ram:mem|mem~1812                         ; Lost fanout        ;
-; ram:mem|mem~1813                         ; Lost fanout        ;
-; ram:mem|mem~1814                         ; Lost fanout        ;
-; ram:mem|mem~1815                         ; Lost fanout        ;
-; ram:mem|mem~1816                         ; Lost fanout        ;
-; ram:mem|mem~1817                         ; Lost fanout        ;
-; ram:mem|mem~1818                         ; Lost fanout        ;
-; ram:mem|mem~1819                         ; Lost fanout        ;
-; ram:mem|mem~1820                         ; Lost fanout        ;
-; ram:mem|mem~1821                         ; Lost fanout        ;
-; ram:mem|mem~1822                         ; Lost fanout        ;
-; ram:mem|mem~1823                         ; Lost fanout        ;
-; ram:mem|mem~1824                         ; Lost fanout        ;
-; ram:mem|mem~1825                         ; Lost fanout        ;
-; ram:mem|mem~1826                         ; Lost fanout        ;
-; ram:mem|mem~1827                         ; Lost fanout        ;
-; ram:mem|mem~1828                         ; Lost fanout        ;
-; ram:mem|mem~1829                         ; Lost fanout        ;
-; ram:mem|mem~1830                         ; Lost fanout        ;
-; ram:mem|mem~1831                         ; Lost fanout        ;
-; ram:mem|mem~1832                         ; Lost fanout        ;
-; ram:mem|mem~1833                         ; Lost fanout        ;
-; ram:mem|mem~1834                         ; Lost fanout        ;
-; ram:mem|mem~1835                         ; Lost fanout        ;
-; ram:mem|mem~1836                         ; Lost fanout        ;
-; ram:mem|mem~1837                         ; Lost fanout        ;
-; ram:mem|mem~1838                         ; Lost fanout        ;
-; ram:mem|mem~1839                         ; Lost fanout        ;
-; ram:mem|mem~1840                         ; Lost fanout        ;
-; ram:mem|mem~1841                         ; Lost fanout        ;
-; ram:mem|mem~1842                         ; Lost fanout        ;
-; ram:mem|mem~1843                         ; Lost fanout        ;
-; ram:mem|mem~1844                         ; Lost fanout        ;
-; ram:mem|mem~1845                         ; Lost fanout        ;
-; ram:mem|mem~1846                         ; Lost fanout        ;
-; ram:mem|mem~1847                         ; Lost fanout        ;
-; ram:mem|mem~1848                         ; Lost fanout        ;
-; ram:mem|mem~1849                         ; Lost fanout        ;
-; ram:mem|mem~1850                         ; Lost fanout        ;
-; ram:mem|mem~1851                         ; Lost fanout        ;
-; ram:mem|mem~1852                         ; Lost fanout        ;
-; ram:mem|mem~1853                         ; Lost fanout        ;
-; ram:mem|mem~1854                         ; Lost fanout        ;
-; ram:mem|mem~1855                         ; Lost fanout        ;
-; ram:mem|mem~1856                         ; Lost fanout        ;
-; ram:mem|mem~1857                         ; Lost fanout        ;
-; ram:mem|mem~1858                         ; Lost fanout        ;
-; ram:mem|mem~1859                         ; Lost fanout        ;
-; ram:mem|mem~1860                         ; Lost fanout        ;
-; ram:mem|mem~1861                         ; Lost fanout        ;
-; ram:mem|mem~1862                         ; Lost fanout        ;
-; ram:mem|mem~1863                         ; Lost fanout        ;
-; ram:mem|mem~1864                         ; Lost fanout        ;
-; ram:mem|mem~1865                         ; Lost fanout        ;
-; ram:mem|mem~1866                         ; Lost fanout        ;
-; ram:mem|mem~1867                         ; Lost fanout        ;
-; ram:mem|mem~1868                         ; Lost fanout        ;
-; ram:mem|mem~1869                         ; Lost fanout        ;
-; ram:mem|mem~1870                         ; Lost fanout        ;
-; ram:mem|mem~1871                         ; Lost fanout        ;
-; ram:mem|mem~1872                         ; Lost fanout        ;
-; ram:mem|mem~1873                         ; Lost fanout        ;
-; ram:mem|mem~1874                         ; Lost fanout        ;
-; ram:mem|mem~1875                         ; Lost fanout        ;
-; ram:mem|mem~1876                         ; Lost fanout        ;
-; ram:mem|mem~1877                         ; Lost fanout        ;
-; ram:mem|mem~1878                         ; Lost fanout        ;
-; ram:mem|mem~1879                         ; Lost fanout        ;
-; ram:mem|mem~1880                         ; Lost fanout        ;
-; ram:mem|mem~1881                         ; Lost fanout        ;
-; ram:mem|mem~1882                         ; Lost fanout        ;
-; ram:mem|mem~1883                         ; Lost fanout        ;
-; ram:mem|mem~1884                         ; Lost fanout        ;
-; ram:mem|mem~1885                         ; Lost fanout        ;
-; ram:mem|mem~1886                         ; Lost fanout        ;
-; ram:mem|mem~1887                         ; Lost fanout        ;
-; ram:mem|mem~1888                         ; Lost fanout        ;
-; ram:mem|mem~1889                         ; Lost fanout        ;
-; ram:mem|mem~1890                         ; Lost fanout        ;
-; ram:mem|mem~1891                         ; Lost fanout        ;
-; ram:mem|mem~1892                         ; Lost fanout        ;
-; ram:mem|mem~1893                         ; Lost fanout        ;
-; ram:mem|mem~1894                         ; Lost fanout        ;
-; ram:mem|mem~1895                         ; Lost fanout        ;
-; ram:mem|mem~1896                         ; Lost fanout        ;
-; ram:mem|mem~1897                         ; Lost fanout        ;
-; ram:mem|mem~1898                         ; Lost fanout        ;
-; ram:mem|mem~1899                         ; Lost fanout        ;
-; ram:mem|mem~1900                         ; Lost fanout        ;
-; ram:mem|mem~1901                         ; Lost fanout        ;
-; ram:mem|mem~1902                         ; Lost fanout        ;
-; ram:mem|mem~1903                         ; Lost fanout        ;
-; ram:mem|mem~1904                         ; Lost fanout        ;
-; ram:mem|mem~1905                         ; Lost fanout        ;
-; ram:mem|mem~1906                         ; Lost fanout        ;
-; ram:mem|mem~1907                         ; Lost fanout        ;
-; ram:mem|mem~1908                         ; Lost fanout        ;
-; ram:mem|mem~1909                         ; Lost fanout        ;
-; ram:mem|mem~1910                         ; Lost fanout        ;
-; ram:mem|mem~1911                         ; Lost fanout        ;
-; ram:mem|mem~1912                         ; Lost fanout        ;
-; ram:mem|mem~1913                         ; Lost fanout        ;
-; ram:mem|mem~1914                         ; Lost fanout        ;
-; ram:mem|mem~1915                         ; Lost fanout        ;
-; ram:mem|mem~1916                         ; Lost fanout        ;
-; ram:mem|mem~1917                         ; Lost fanout        ;
-; ram:mem|mem~1918                         ; Lost fanout        ;
-; ram:mem|mem~1919                         ; Lost fanout        ;
-; ram:mem|mem~1920                         ; Lost fanout        ;
-; ram:mem|mem~1921                         ; Lost fanout        ;
-; ram:mem|mem~1922                         ; Lost fanout        ;
-; ram:mem|mem~1923                         ; Lost fanout        ;
-; ram:mem|mem~1924                         ; Lost fanout        ;
-; ram:mem|mem~1925                         ; Lost fanout        ;
-; ram:mem|mem~1926                         ; Lost fanout        ;
-; ram:mem|mem~1927                         ; Lost fanout        ;
-; ram:mem|mem~1928                         ; Lost fanout        ;
-; ram:mem|mem~1929                         ; Lost fanout        ;
-; ram:mem|mem~1930                         ; Lost fanout        ;
-; ram:mem|mem~1931                         ; Lost fanout        ;
-; ram:mem|mem~1932                         ; Lost fanout        ;
-; ram:mem|mem~1933                         ; Lost fanout        ;
-; ram:mem|mem~1934                         ; Lost fanout        ;
-; ram:mem|mem~1935                         ; Lost fanout        ;
-; ram:mem|mem~1936                         ; Lost fanout        ;
-; ram:mem|mem~1937                         ; Lost fanout        ;
-; ram:mem|mem~1938                         ; Lost fanout        ;
-; ram:mem|mem~1939                         ; Lost fanout        ;
-; ram:mem|mem~1940                         ; Lost fanout        ;
-; ram:mem|mem~1941                         ; Lost fanout        ;
-; ram:mem|mem~1942                         ; Lost fanout        ;
-; ram:mem|mem~1943                         ; Lost fanout        ;
-; ram:mem|mem~1944                         ; Lost fanout        ;
-; ram:mem|mem~1945                         ; Lost fanout        ;
-; ram:mem|mem~1946                         ; Lost fanout        ;
-; ram:mem|mem~1947                         ; Lost fanout        ;
-; ram:mem|mem~1948                         ; Lost fanout        ;
-; ram:mem|mem~1949                         ; Lost fanout        ;
-; ram:mem|mem~1950                         ; Lost fanout        ;
-; ram:mem|mem~1951                         ; Lost fanout        ;
-; ram:mem|mem~1952                         ; Lost fanout        ;
-; ram:mem|mem~1953                         ; Lost fanout        ;
-; ram:mem|mem~1954                         ; Lost fanout        ;
-; ram:mem|mem~1955                         ; Lost fanout        ;
-; ram:mem|mem~1956                         ; Lost fanout        ;
-; ram:mem|mem~1957                         ; Lost fanout        ;
-; ram:mem|mem~1958                         ; Lost fanout        ;
-; ram:mem|mem~1959                         ; Lost fanout        ;
-; ram:mem|mem~1960                         ; Lost fanout        ;
-; ram:mem|mem~1961                         ; Lost fanout        ;
-; ram:mem|mem~1962                         ; Lost fanout        ;
-; ram:mem|mem~1963                         ; Lost fanout        ;
-; ram:mem|mem~1964                         ; Lost fanout        ;
-; ram:mem|mem~1965                         ; Lost fanout        ;
-; ram:mem|mem~1966                         ; Lost fanout        ;
-; ram:mem|mem~1967                         ; Lost fanout        ;
-; ram:mem|mem~1968                         ; Lost fanout        ;
-; ram:mem|mem~1969                         ; Lost fanout        ;
-; ram:mem|mem~1970                         ; Lost fanout        ;
-; ram:mem|mem~1971                         ; Lost fanout        ;
-; ram:mem|mem~1972                         ; Lost fanout        ;
-; ram:mem|mem~1973                         ; Lost fanout        ;
-; ram:mem|mem~1974                         ; Lost fanout        ;
-; ram:mem|mem~1975                         ; Lost fanout        ;
-; ram:mem|mem~1976                         ; Lost fanout        ;
-; ram:mem|mem~1977                         ; Lost fanout        ;
-; ram:mem|mem~1978                         ; Lost fanout        ;
-; ram:mem|mem~1979                         ; Lost fanout        ;
-; ram:mem|mem~1980                         ; Lost fanout        ;
-; ram:mem|mem~1981                         ; Lost fanout        ;
-; ram:mem|mem~1982                         ; Lost fanout        ;
-; ram:mem|mem~1983                         ; Lost fanout        ;
-; ram:mem|mem~1984                         ; Lost fanout        ;
-; ram:mem|mem~1985                         ; Lost fanout        ;
-; ram:mem|mem~1986                         ; Lost fanout        ;
-; ram:mem|mem~1987                         ; Lost fanout        ;
-; ram:mem|mem~1988                         ; Lost fanout        ;
-; ram:mem|mem~1989                         ; Lost fanout        ;
-; ram:mem|mem~1990                         ; Lost fanout        ;
-; ram:mem|mem~1991                         ; Lost fanout        ;
-; ram:mem|mem~1992                         ; Lost fanout        ;
-; ram:mem|mem~1993                         ; Lost fanout        ;
-; ram:mem|mem~1994                         ; Lost fanout        ;
-; ram:mem|mem~1995                         ; Lost fanout        ;
-; ram:mem|mem~1996                         ; Lost fanout        ;
-; ram:mem|mem~1997                         ; Lost fanout        ;
-; ram:mem|mem~1998                         ; Lost fanout        ;
-; ram:mem|mem~1999                         ; Lost fanout        ;
-; ram:mem|mem~2000                         ; Lost fanout        ;
-; ram:mem|mem~2001                         ; Lost fanout        ;
-; ram:mem|mem~2002                         ; Lost fanout        ;
-; ram:mem|mem~2003                         ; Lost fanout        ;
-; ram:mem|mem~2004                         ; Lost fanout        ;
-; ram:mem|mem~2005                         ; Lost fanout        ;
-; ram:mem|mem~2006                         ; Lost fanout        ;
-; ram:mem|mem~2007                         ; Lost fanout        ;
-; ram:mem|mem~2008                         ; Lost fanout        ;
-; ram:mem|mem~2009                         ; Lost fanout        ;
-; ram:mem|mem~2010                         ; Lost fanout        ;
-; ram:mem|mem~2011                         ; Lost fanout        ;
-; ram:mem|mem~2012                         ; Lost fanout        ;
-; ram:mem|mem~2013                         ; Lost fanout        ;
-; ram:mem|mem~2014                         ; Lost fanout        ;
-; ram:mem|mem~2015                         ; Lost fanout        ;
-; ram:mem|mem~2016                         ; Lost fanout        ;
-; ram:mem|mem~2017                         ; Lost fanout        ;
-; ram:mem|mem~2018                         ; Lost fanout        ;
-; ram:mem|mem~2019                         ; Lost fanout        ;
-; ram:mem|mem~2020                         ; Lost fanout        ;
-; ram:mem|mem~2021                         ; Lost fanout        ;
-; ram:mem|mem~2022                         ; Lost fanout        ;
-; ram:mem|mem~2023                         ; Lost fanout        ;
-; ram:mem|mem~2024                         ; Lost fanout        ;
-; ram:mem|mem~2025                         ; Lost fanout        ;
-; ram:mem|mem~2026                         ; Lost fanout        ;
-; ram:mem|mem~2027                         ; Lost fanout        ;
-; ram:mem|mem~2028                         ; Lost fanout        ;
-; ram:mem|mem~2029                         ; Lost fanout        ;
-; ram:mem|mem~2030                         ; Lost fanout        ;
-; ram:mem|mem~2031                         ; Lost fanout        ;
-; ram:mem|mem~2032                         ; Lost fanout        ;
-; ram:mem|mem~2033                         ; Lost fanout        ;
-; ram:mem|mem~2034                         ; Lost fanout        ;
-; ram:mem|mem~2035                         ; Lost fanout        ;
-; ram:mem|mem~2036                         ; Lost fanout        ;
-; ram:mem|mem~2037                         ; Lost fanout        ;
-; ram:mem|mem~2038                         ; Lost fanout        ;
-; ram:mem|mem~2039                         ; Lost fanout        ;
-; ram:mem|mem~2040                         ; Lost fanout        ;
-; ram:mem|mem~2041                         ; Lost fanout        ;
-; ram:mem|mem~2042                         ; Lost fanout        ;
-; ram:mem|mem~2043                         ; Lost fanout        ;
-; ram:mem|mem~2044                         ; Lost fanout        ;
-; ram:mem|mem~2045                         ; Lost fanout        ;
-; ram:mem|mem~2046                         ; Lost fanout        ;
-; ram:mem|mem~2047                         ; Lost fanout        ;
-; ram:mem|mem~2048                         ; Lost fanout        ;
-; ram:mem|mem~2049                         ; Lost fanout        ;
-; ram:mem|mem~2050                         ; Lost fanout        ;
-; ram:mem|mem~2051                         ; Lost fanout        ;
-; ram:mem|mem~2052                         ; Lost fanout        ;
-; ram:mem|mem~2053                         ; Lost fanout        ;
-; ram:mem|mem~2054                         ; Lost fanout        ;
-; ram:mem|mem~2055                         ; Lost fanout        ;
-; ram:mem|mem~2056                         ; Lost fanout        ;
-; ram:mem|mem~2057                         ; Lost fanout        ;
-; ram:mem|mem~2058                         ; Lost fanout        ;
-; ram:mem|mem~2059                         ; Lost fanout        ;
-; ram:mem|mem~2060                         ; Lost fanout        ;
-; ram:mem|mem~2061                         ; Lost fanout        ;
-; ram:mem|mem~2062                         ; Lost fanout        ;
-; ram:mem|mem~2063                         ; Lost fanout        ;
-; ram:mem|mem~2064                         ; Lost fanout        ;
-; ram:mem|mem~2065                         ; Lost fanout        ;
-; ram:mem|mem~2066                         ; Lost fanout        ;
-; ram:mem|mem~2067                         ; Lost fanout        ;
-; ram:mem|mem~2068                         ; Lost fanout        ;
-; ram:mem|mem~2069                         ; Lost fanout        ;
-; ram:mem|mem~2070                         ; Lost fanout        ;
-; ram:mem|mem~2071                         ; Lost fanout        ;
-; ram:mem|mem~2072                         ; Lost fanout        ;
-; ram:mem|mem~2073                         ; Lost fanout        ;
-; ram:mem|mem~2074                         ; Lost fanout        ;
-; ram:mem|mem~2075                         ; Lost fanout        ;
-; ram:mem|mem~2076                         ; Lost fanout        ;
-; ram:mem|mem~2077                         ; Lost fanout        ;
-; ram:mem|mem~2078                         ; Lost fanout        ;
-; ram:mem|mem~2079                         ; Lost fanout        ;
-; ram:mem|mem~2080                         ; Lost fanout        ;
-; ram:mem|mem~2081                         ; Lost fanout        ;
-; ram:mem|mem~2082                         ; Lost fanout        ;
-; ram:mem|mem~2083                         ; Lost fanout        ;
-; ram:mem|mem~2084                         ; Lost fanout        ;
-; ram:mem|mem~2085                         ; Lost fanout        ;
-; ram:mem|mem~2086                         ; Lost fanout        ;
-; ram:mem|mem~2087                         ; Lost fanout        ;
-; ram:mem|mem~2088                         ; Lost fanout        ;
-; ram:mem|mem~2089                         ; Lost fanout        ;
-; ram:mem|mem~2090                         ; Lost fanout        ;
-; ram:mem|mem~2091                         ; Lost fanout        ;
-; ram:mem|mem~2092                         ; Lost fanout        ;
-; ram:mem|mem~2093                         ; Lost fanout        ;
-; ram:mem|mem~2094                         ; Lost fanout        ;
-; ram:mem|mem~2095                         ; Lost fanout        ;
-; ram:mem|mem~2096                         ; Lost fanout        ;
-; ram:mem|mem~2097                         ; Lost fanout        ;
-; ram:mem|mem~2098                         ; Lost fanout        ;
-; ram:mem|mem~2099                         ; Lost fanout        ;
-; ram:mem|mem~2100                         ; Lost fanout        ;
-; ram:mem|mem~2101                         ; Lost fanout        ;
-; ram:mem|mem~2102                         ; Lost fanout        ;
-; ram:mem|mem~2103                         ; Lost fanout        ;
-; ram:mem|mem~2104                         ; Lost fanout        ;
-; ram:mem|mem~2105                         ; Lost fanout        ;
-; ram:mem|mem~2106                         ; Lost fanout        ;
-; ram:mem|mem~2107                         ; Lost fanout        ;
-; ram:mem|mem~2108                         ; Lost fanout        ;
-; ram:mem|mem~2109                         ; Lost fanout        ;
-; ram:mem|mem~2110                         ; Lost fanout        ;
-; ram:mem|mem~2111                         ; Lost fanout        ;
-; ram:mem|mem~2112                         ; Lost fanout        ;
-; ram:mem|mem~2113                         ; Lost fanout        ;
-; ram:mem|mem~2114                         ; Lost fanout        ;
-; ram:mem|mem~2115                         ; Lost fanout        ;
-; ram:mem|mem~2116                         ; Lost fanout        ;
-; ram:mem|mem~2117                         ; Lost fanout        ;
-; ram:mem|mem~2118                         ; Lost fanout        ;
-; ram:mem|mem~2119                         ; Lost fanout        ;
-; ram:mem|mem~2120                         ; Lost fanout        ;
-; ram:mem|mem~2121                         ; Lost fanout        ;
-; ram:mem|mem~2122                         ; Lost fanout        ;
-; ram:mem|mem~2123                         ; Lost fanout        ;
-; ram:mem|mem~2124                         ; Lost fanout        ;
-; ram:mem|mem~2125                         ; Lost fanout        ;
-; ram:mem|mem~2126                         ; Lost fanout        ;
-; ram:mem|mem~2127                         ; Lost fanout        ;
-; ram:mem|mem~2128                         ; Lost fanout        ;
-; ram:mem|mem~2129                         ; Lost fanout        ;
-; ram:mem|mem~2130                         ; Lost fanout        ;
-; ram:mem|mem~2131                         ; Lost fanout        ;
-; ram:mem|mem~2132                         ; Lost fanout        ;
-; ram:mem|mem~2133                         ; Lost fanout        ;
-; ram:mem|mem~2134                         ; Lost fanout        ;
-; ram:mem|mem~2135                         ; Lost fanout        ;
-; ram:mem|mem~2136                         ; Lost fanout        ;
-; ram:mem|mem~2137                         ; Lost fanout        ;
-; ram:mem|mem~2138                         ; Lost fanout        ;
-; ram:mem|mem~2139                         ; Lost fanout        ;
-; ram:mem|mem~2140                         ; Lost fanout        ;
-; ram:mem|mem~2141                         ; Lost fanout        ;
-; ram:mem|mem~2142                         ; Lost fanout        ;
-; ram:mem|mem~2143                         ; Lost fanout        ;
-; ram:mem|mem~2144                         ; Lost fanout        ;
-; ram:mem|mem~2145                         ; Lost fanout        ;
-; ram:mem|mem~2146                         ; Lost fanout        ;
-; ram:mem|mem~2147                         ; Lost fanout        ;
-; ram:mem|mem~2148                         ; Lost fanout        ;
-; ram:mem|mem~2149                         ; Lost fanout        ;
-; ram:mem|mem~2150                         ; Lost fanout        ;
-; ram:mem|mem~2151                         ; Lost fanout        ;
-; ram:mem|mem~2152                         ; Lost fanout        ;
-; ram:mem|mem~2153                         ; Lost fanout        ;
-; ram:mem|mem~2154                         ; Lost fanout        ;
-; ram:mem|mem~2155                         ; Lost fanout        ;
-; ram:mem|mem~2156                         ; Lost fanout        ;
-; ram:mem|mem~2157                         ; Lost fanout        ;
-; ram:mem|mem~2158                         ; Lost fanout        ;
-; ram:mem|mem~2159                         ; Lost fanout        ;
-; ram:mem|mem~2160                         ; Lost fanout        ;
-; ram:mem|mem~2161                         ; Lost fanout        ;
-; ram:mem|mem~2162                         ; Lost fanout        ;
-; ram:mem|mem~2163                         ; Lost fanout        ;
-; ram:mem|mem~2164                         ; Lost fanout        ;
-; ram:mem|mem~2165                         ; Lost fanout        ;
-; ram:mem|mem~2166                         ; Lost fanout        ;
-; ram:mem|mem~2167                         ; Lost fanout        ;
-; ram:mem|mem~2168                         ; Lost fanout        ;
-; ram:mem|mem~2169                         ; Lost fanout        ;
-; ram:mem|mem~2170                         ; Lost fanout        ;
-; ram:mem|mem~2171                         ; Lost fanout        ;
-; ram:mem|mem~2172                         ; Lost fanout        ;
-; ram:mem|mem~2173                         ; Lost fanout        ;
-; ram:mem|mem~2174                         ; Lost fanout        ;
-; ram:mem|mem~2175                         ; Lost fanout        ;
-; ram:mem|mem~2176                         ; Lost fanout        ;
-; ram:mem|mem~2177                         ; Lost fanout        ;
-; ram:mem|mem~2178                         ; Lost fanout        ;
-; ram:mem|mem~2179                         ; Lost fanout        ;
-; ram:mem|mem~2180                         ; Lost fanout        ;
-; ram:mem|mem~2181                         ; Lost fanout        ;
-; ram:mem|mem~2182                         ; Lost fanout        ;
-; ram:mem|mem~2183                         ; Lost fanout        ;
-; ram:mem|mem~2184                         ; Lost fanout        ;
-; ram:mem|mem~2185                         ; Lost fanout        ;
-; ram:mem|mem~2186                         ; Lost fanout        ;
-; ram:mem|mem~2187                         ; Lost fanout        ;
-; ram:mem|mem~2188                         ; Lost fanout        ;
-; ram:mem|mem~2189                         ; Lost fanout        ;
-; ram:mem|mem~2190                         ; Lost fanout        ;
-; ram:mem|mem~2191                         ; Lost fanout        ;
-; ram:mem|mem~2192                         ; Lost fanout        ;
-; ram:mem|mem~2193                         ; Lost fanout        ;
-; ram:mem|mem~2194                         ; Lost fanout        ;
-; ram:mem|mem~2195                         ; Lost fanout        ;
-; ram:mem|mem~2196                         ; Lost fanout        ;
-; ram:mem|mem~2197                         ; Lost fanout        ;
-; ram:mem|mem~2198                         ; Lost fanout        ;
-; ram:mem|mem~2199                         ; Lost fanout        ;
-; ram:mem|mem~2200                         ; Lost fanout        ;
-; ram:mem|mem~2201                         ; Lost fanout        ;
-; ram:mem|mem~2202                         ; Lost fanout        ;
-; ram:mem|mem~2203                         ; Lost fanout        ;
-; ram:mem|mem~2204                         ; Lost fanout        ;
-; ram:mem|mem~2205                         ; Lost fanout        ;
-; ram:mem|mem~2206                         ; Lost fanout        ;
-; ram:mem|mem~2207                         ; Lost fanout        ;
-; ram:mem|mem~2208                         ; Lost fanout        ;
-; ram:mem|mem~2209                         ; Lost fanout        ;
-; ram:mem|mem~2210                         ; Lost fanout        ;
-; ram:mem|mem~2211                         ; Lost fanout        ;
-; ram:mem|mem~2212                         ; Lost fanout        ;
-; ram:mem|mem~2213                         ; Lost fanout        ;
-; ram:mem|mem~2214                         ; Lost fanout        ;
-; ram:mem|mem~2215                         ; Lost fanout        ;
-; ram:mem|mem~2216                         ; Lost fanout        ;
-; ram:mem|mem~2217                         ; Lost fanout        ;
-; ram:mem|mem~2218                         ; Lost fanout        ;
-; ram:mem|mem~2219                         ; Lost fanout        ;
-; ram:mem|mem~2220                         ; Lost fanout        ;
-; ram:mem|mem~2221                         ; Lost fanout        ;
-; ram:mem|mem~2222                         ; Lost fanout        ;
-; ram:mem|mem~2223                         ; Lost fanout        ;
-; ram:mem|mem~2224                         ; Lost fanout        ;
-; ram:mem|mem~2225                         ; Lost fanout        ;
-; ram:mem|mem~2226                         ; Lost fanout        ;
-; ram:mem|mem~2227                         ; Lost fanout        ;
-; ram:mem|mem~2228                         ; Lost fanout        ;
-; ram:mem|mem~2229                         ; Lost fanout        ;
-; ram:mem|mem~2230                         ; Lost fanout        ;
-; ram:mem|mem~2231                         ; Lost fanout        ;
-; ram:mem|mem~2232                         ; Lost fanout        ;
-; ram:mem|mem~2233                         ; Lost fanout        ;
-; ram:mem|mem~2234                         ; Lost fanout        ;
-; ram:mem|mem~2235                         ; Lost fanout        ;
-; ram:mem|mem~2236                         ; Lost fanout        ;
-; ram:mem|mem~2237                         ; Lost fanout        ;
-; ram:mem|mem~2238                         ; Lost fanout        ;
-; ram:mem|mem~2239                         ; Lost fanout        ;
-; ram:mem|mem~2240                         ; Lost fanout        ;
-; ram:mem|mem~2241                         ; Lost fanout        ;
-; ram:mem|mem~2242                         ; Lost fanout        ;
-; ram:mem|mem~2243                         ; Lost fanout        ;
-; ram:mem|mem~2244                         ; Lost fanout        ;
-; ram:mem|mem~2245                         ; Lost fanout        ;
-; ram:mem|mem~2246                         ; Lost fanout        ;
-; ram:mem|mem~2247                         ; Lost fanout        ;
-; ram:mem|mem~2248                         ; Lost fanout        ;
-; ram:mem|mem~2249                         ; Lost fanout        ;
-; ram:mem|mem~2250                         ; Lost fanout        ;
-; ram:mem|mem~2251                         ; Lost fanout        ;
-; ram:mem|mem~2252                         ; Lost fanout        ;
-; ram:mem|mem~2253                         ; Lost fanout        ;
-; ram:mem|mem~2254                         ; Lost fanout        ;
-; ram:mem|mem~2255                         ; Lost fanout        ;
-; ram:mem|mem~2256                         ; Lost fanout        ;
-; ram:mem|mem~2257                         ; Lost fanout        ;
-; ram:mem|mem~2258                         ; Lost fanout        ;
-; ram:mem|mem~2259                         ; Lost fanout        ;
-; ram:mem|mem~2260                         ; Lost fanout        ;
-; ram:mem|mem~2261                         ; Lost fanout        ;
-; ram:mem|mem~2262                         ; Lost fanout        ;
-; ram:mem|mem~2263                         ; Lost fanout        ;
-; ram:mem|mem~2264                         ; Lost fanout        ;
-; ram:mem|mem~2265                         ; Lost fanout        ;
-; ram:mem|mem~2266                         ; Lost fanout        ;
-; ram:mem|mem~2267                         ; Lost fanout        ;
-; ram:mem|mem~2268                         ; Lost fanout        ;
-; ram:mem|mem~2269                         ; Lost fanout        ;
-; ram:mem|mem~2270                         ; Lost fanout        ;
-; ram:mem|mem~2271                         ; Lost fanout        ;
-; ram:mem|mem~2272                         ; Lost fanout        ;
-; ram:mem|mem~2273                         ; Lost fanout        ;
-; ram:mem|mem~2274                         ; Lost fanout        ;
-; ram:mem|mem~2275                         ; Lost fanout        ;
-; ram:mem|mem~2276                         ; Lost fanout        ;
-; ram:mem|mem~2277                         ; Lost fanout        ;
-; ram:mem|mem~2278                         ; Lost fanout        ;
-; ram:mem|mem~2279                         ; Lost fanout        ;
-; ram:mem|mem~2280                         ; Lost fanout        ;
-; ram:mem|mem~2281                         ; Lost fanout        ;
-; ram:mem|mem~2282                         ; Lost fanout        ;
-; ram:mem|mem~2283                         ; Lost fanout        ;
-; ram:mem|mem~2284                         ; Lost fanout        ;
-; ram:mem|mem~2285                         ; Lost fanout        ;
-; ram:mem|mem~2286                         ; Lost fanout        ;
-; ram:mem|mem~2287                         ; Lost fanout        ;
-; ram:mem|mem~2288                         ; Lost fanout        ;
-; ram:mem|mem~2289                         ; Lost fanout        ;
-; ram:mem|mem~2290                         ; Lost fanout        ;
-; ram:mem|mem~2291                         ; Lost fanout        ;
-; ram:mem|mem~2292                         ; Lost fanout        ;
-; ram:mem|mem~2293                         ; Lost fanout        ;
-; ram:mem|mem~2294                         ; Lost fanout        ;
-; ram:mem|mem~2295                         ; Lost fanout        ;
-; ram:mem|mem~2296                         ; Lost fanout        ;
-; ram:mem|mem~2297                         ; Lost fanout        ;
-; ram:mem|mem~2298                         ; Lost fanout        ;
-; ram:mem|mem~2299                         ; Lost fanout        ;
-; ram:mem|mem~2300                         ; Lost fanout        ;
-; ram:mem|mem~2301                         ; Lost fanout        ;
-; ram:mem|mem~2302                         ; Lost fanout        ;
-; ram:mem|mem~2303                         ; Lost fanout        ;
-; ram:mem|mem~2304                         ; Lost fanout        ;
-; ram:mem|mem~2305                         ; Lost fanout        ;
-; ram:mem|mem~2306                         ; Lost fanout        ;
-; ram:mem|mem~2307                         ; Lost fanout        ;
-; ram:mem|mem~2308                         ; Lost fanout        ;
-; ram:mem|mem~2309                         ; Lost fanout        ;
-; ram:mem|mem~2310                         ; Lost fanout        ;
-; ram:mem|mem~2311                         ; Lost fanout        ;
-; ram:mem|mem~2312                         ; Lost fanout        ;
-; ram:mem|mem~2313                         ; Lost fanout        ;
-; ram:mem|mem~2314                         ; Lost fanout        ;
-; ram:mem|mem~2315                         ; Lost fanout        ;
-; ram:mem|mem~2316                         ; Lost fanout        ;
-; ram:mem|mem~2317                         ; Lost fanout        ;
-; ram:mem|mem~2318                         ; Lost fanout        ;
-; ram:mem|mem~2319                         ; Lost fanout        ;
-; ram:mem|mem~2320                         ; Lost fanout        ;
-; ram:mem|mem~2321                         ; Lost fanout        ;
-; ram:mem|mem~2322                         ; Lost fanout        ;
-; ram:mem|mem~2323                         ; Lost fanout        ;
-; ram:mem|mem~2324                         ; Lost fanout        ;
-; ram:mem|mem~2325                         ; Lost fanout        ;
-; ram:mem|mem~2326                         ; Lost fanout        ;
-; ram:mem|mem~2327                         ; Lost fanout        ;
-; ram:mem|mem~2328                         ; Lost fanout        ;
-; ram:mem|mem~2329                         ; Lost fanout        ;
-; ram:mem|mem~2330                         ; Lost fanout        ;
-; ram:mem|mem~2331                         ; Lost fanout        ;
-; ram:mem|mem~2332                         ; Lost fanout        ;
-; ram:mem|mem~2333                         ; Lost fanout        ;
-; ram:mem|mem~2334                         ; Lost fanout        ;
-; ram:mem|mem~2335                         ; Lost fanout        ;
-; ram:mem|mem~2336                         ; Lost fanout        ;
-; ram:mem|mem~2337                         ; Lost fanout        ;
-; ram:mem|mem~2338                         ; Lost fanout        ;
-; ram:mem|mem~2339                         ; Lost fanout        ;
-; ram:mem|mem~2340                         ; Lost fanout        ;
-; ram:mem|mem~2341                         ; Lost fanout        ;
-; ram:mem|mem~2342                         ; Lost fanout        ;
-; ram:mem|mem~2343                         ; Lost fanout        ;
-; ram:mem|mem~2344                         ; Lost fanout        ;
-; ram:mem|mem~2345                         ; Lost fanout        ;
-; ram:mem|mem~2346                         ; Lost fanout        ;
-; ram:mem|mem~2347                         ; Lost fanout        ;
-; ram:mem|mem~2348                         ; Lost fanout        ;
-; ram:mem|mem~2349                         ; Lost fanout        ;
-; ram:mem|mem~2350                         ; Lost fanout        ;
-; ram:mem|mem~2351                         ; Lost fanout        ;
-; ram:mem|mem~2352                         ; Lost fanout        ;
-; ram:mem|mem~2353                         ; Lost fanout        ;
-; ram:mem|mem~2354                         ; Lost fanout        ;
-; ram:mem|mem~2355                         ; Lost fanout        ;
-; ram:mem|mem~2356                         ; Lost fanout        ;
-; ram:mem|mem~2357                         ; Lost fanout        ;
-; ram:mem|mem~2358                         ; Lost fanout        ;
-; ram:mem|mem~2359                         ; Lost fanout        ;
-; ram:mem|mem~2360                         ; Lost fanout        ;
-; ram:mem|mem~2361                         ; Lost fanout        ;
-; ram:mem|mem~2362                         ; Lost fanout        ;
-; ram:mem|mem~2363                         ; Lost fanout        ;
-; ram:mem|mem~2364                         ; Lost fanout        ;
-; ram:mem|mem~2365                         ; Lost fanout        ;
-; ram:mem|mem~2366                         ; Lost fanout        ;
-; ram:mem|mem~2367                         ; Lost fanout        ;
-; ram:mem|mem~2368                         ; Lost fanout        ;
-; ram:mem|mem~2369                         ; Lost fanout        ;
-; ram:mem|mem~2370                         ; Lost fanout        ;
-; ram:mem|mem~2371                         ; Lost fanout        ;
-; ram:mem|mem~2372                         ; Lost fanout        ;
-; ram:mem|mem~2373                         ; Lost fanout        ;
-; ram:mem|mem~2374                         ; Lost fanout        ;
-; ram:mem|mem~2375                         ; Lost fanout        ;
-; ram:mem|mem~2376                         ; Lost fanout        ;
-; ram:mem|mem~2377                         ; Lost fanout        ;
-; ram:mem|mem~2378                         ; Lost fanout        ;
-; ram:mem|mem~2379                         ; Lost fanout        ;
-; ram:mem|mem~2380                         ; Lost fanout        ;
-; ram:mem|mem~2381                         ; Lost fanout        ;
-; ram:mem|mem~2382                         ; Lost fanout        ;
-; ram:mem|mem~2383                         ; Lost fanout        ;
-; ram:mem|mem~2384                         ; Lost fanout        ;
-; ram:mem|mem~2385                         ; Lost fanout        ;
-; ram:mem|mem~2386                         ; Lost fanout        ;
-; ram:mem|mem~2387                         ; Lost fanout        ;
-; ram:mem|mem~2388                         ; Lost fanout        ;
-; ram:mem|mem~2389                         ; Lost fanout        ;
-; ram:mem|mem~2390                         ; Lost fanout        ;
-; ram:mem|mem~2391                         ; Lost fanout        ;
-; ram:mem|mem~2392                         ; Lost fanout        ;
-; ram:mem|mem~2393                         ; Lost fanout        ;
-; ram:mem|mem~2394                         ; Lost fanout        ;
-; ram:mem|mem~2395                         ; Lost fanout        ;
-; ram:mem|mem~2396                         ; Lost fanout        ;
-; ram:mem|mem~2397                         ; Lost fanout        ;
-; ram:mem|mem~2398                         ; Lost fanout        ;
-; ram:mem|mem~2399                         ; Lost fanout        ;
-; ram:mem|mem~2400                         ; Lost fanout        ;
-; ram:mem|mem~2401                         ; Lost fanout        ;
-; ram:mem|mem~2402                         ; Lost fanout        ;
-; ram:mem|mem~2403                         ; Lost fanout        ;
-; ram:mem|mem~2404                         ; Lost fanout        ;
-; ram:mem|mem~2405                         ; Lost fanout        ;
-; ram:mem|mem~2406                         ; Lost fanout        ;
-; ram:mem|mem~2407                         ; Lost fanout        ;
-; ram:mem|mem~2408                         ; Lost fanout        ;
-; ram:mem|mem~2409                         ; Lost fanout        ;
-; ram:mem|mem~2410                         ; Lost fanout        ;
-; ram:mem|mem~2411                         ; Lost fanout        ;
-; ram:mem|mem~2412                         ; Lost fanout        ;
-; ram:mem|mem~2413                         ; Lost fanout        ;
-; ram:mem|mem~2414                         ; Lost fanout        ;
-; ram:mem|mem~2415                         ; Lost fanout        ;
-; ram:mem|mem~2416                         ; Lost fanout        ;
-; ram:mem|mem~2417                         ; Lost fanout        ;
-; ram:mem|mem~2418                         ; Lost fanout        ;
-; ram:mem|mem~2419                         ; Lost fanout        ;
-; ram:mem|mem~2420                         ; Lost fanout        ;
-; ram:mem|mem~2421                         ; Lost fanout        ;
-; ram:mem|mem~2422                         ; Lost fanout        ;
-; ram:mem|mem~2423                         ; Lost fanout        ;
-; ram:mem|mem~2424                         ; Lost fanout        ;
-; ram:mem|mem~2425                         ; Lost fanout        ;
-; ram:mem|mem~2426                         ; Lost fanout        ;
-; ram:mem|mem~2427                         ; Lost fanout        ;
-; ram:mem|mem~2428                         ; Lost fanout        ;
-; ram:mem|mem~2429                         ; Lost fanout        ;
-; ram:mem|mem~2430                         ; Lost fanout        ;
-; ram:mem|mem~2431                         ; Lost fanout        ;
-; ram:mem|mem~2432                         ; Lost fanout        ;
-; ram:mem|mem~2433                         ; Lost fanout        ;
-; ram:mem|mem~2434                         ; Lost fanout        ;
-; ram:mem|mem~2435                         ; Lost fanout        ;
-; ram:mem|mem~2436                         ; Lost fanout        ;
-; ram:mem|mem~2437                         ; Lost fanout        ;
-; ram:mem|mem~2438                         ; Lost fanout        ;
-; ram:mem|mem~2439                         ; Lost fanout        ;
-; ram:mem|mem~2440                         ; Lost fanout        ;
-; ram:mem|mem~2441                         ; Lost fanout        ;
-; ram:mem|mem~2442                         ; Lost fanout        ;
-; ram:mem|mem~2443                         ; Lost fanout        ;
-; ram:mem|mem~2444                         ; Lost fanout        ;
-; ram:mem|mem~2445                         ; Lost fanout        ;
-; ram:mem|mem~2446                         ; Lost fanout        ;
-; ram:mem|mem~2447                         ; Lost fanout        ;
-; ram:mem|mem~2448                         ; Lost fanout        ;
-; ram:mem|mem~2449                         ; Lost fanout        ;
-; ram:mem|mem~2450                         ; Lost fanout        ;
-; ram:mem|mem~2451                         ; Lost fanout        ;
-; ram:mem|mem~2452                         ; Lost fanout        ;
-; ram:mem|mem~2453                         ; Lost fanout        ;
-; ram:mem|mem~2454                         ; Lost fanout        ;
-; ram:mem|mem~2455                         ; Lost fanout        ;
-; ram:mem|mem~2456                         ; Lost fanout        ;
-; ram:mem|mem~2457                         ; Lost fanout        ;
-; ram:mem|mem~2458                         ; Lost fanout        ;
-; ram:mem|mem~2459                         ; Lost fanout        ;
-; ram:mem|mem~2460                         ; Lost fanout        ;
-; ram:mem|mem~2461                         ; Lost fanout        ;
-; ram:mem|mem~2462                         ; Lost fanout        ;
-; ram:mem|mem~2463                         ; Lost fanout        ;
-; ram:mem|mem~2464                         ; Lost fanout        ;
-; ram:mem|mem~2465                         ; Lost fanout        ;
-; ram:mem|mem~2466                         ; Lost fanout        ;
-; ram:mem|mem~2467                         ; Lost fanout        ;
-; ram:mem|mem~2468                         ; Lost fanout        ;
-; ram:mem|mem~2469                         ; Lost fanout        ;
-; ram:mem|mem~2470                         ; Lost fanout        ;
-; ram:mem|mem~2471                         ; Lost fanout        ;
-; ram:mem|mem~2472                         ; Lost fanout        ;
-; ram:mem|mem~2473                         ; Lost fanout        ;
-; ram:mem|mem~2474                         ; Lost fanout        ;
-; ram:mem|mem~2475                         ; Lost fanout        ;
-; ram:mem|mem~2476                         ; Lost fanout        ;
-; ram:mem|mem~2477                         ; Lost fanout        ;
-; ram:mem|mem~2478                         ; Lost fanout        ;
-; ram:mem|mem~2479                         ; Lost fanout        ;
-; ram:mem|mem~2480                         ; Lost fanout        ;
-; ram:mem|mem~2481                         ; Lost fanout        ;
-; ram:mem|mem~2482                         ; Lost fanout        ;
-; ram:mem|mem~2483                         ; Lost fanout        ;
-; ram:mem|mem~2484                         ; Lost fanout        ;
-; ram:mem|mem~2485                         ; Lost fanout        ;
-; ram:mem|mem~2486                         ; Lost fanout        ;
-; ram:mem|mem~2487                         ; Lost fanout        ;
-; ram:mem|mem~2488                         ; Lost fanout        ;
-; ram:mem|mem~2489                         ; Lost fanout        ;
-; ram:mem|mem~2490                         ; Lost fanout        ;
-; ram:mem|mem~2491                         ; Lost fanout        ;
-; ram:mem|mem~2492                         ; Lost fanout        ;
-; ram:mem|mem~2493                         ; Lost fanout        ;
-; ram:mem|mem~2494                         ; Lost fanout        ;
-; ram:mem|mem~2495                         ; Lost fanout        ;
-; ram:mem|mem~2496                         ; Lost fanout        ;
-; ram:mem|mem~2497                         ; Lost fanout        ;
-; ram:mem|mem~2498                         ; Lost fanout        ;
-; ram:mem|mem~2499                         ; Lost fanout        ;
-; ram:mem|mem~2500                         ; Lost fanout        ;
-; ram:mem|mem~2501                         ; Lost fanout        ;
-; ram:mem|mem~2502                         ; Lost fanout        ;
-; ram:mem|mem~2503                         ; Lost fanout        ;
-; ram:mem|mem~2504                         ; Lost fanout        ;
-; ram:mem|mem~2505                         ; Lost fanout        ;
-; ram:mem|mem~2506                         ; Lost fanout        ;
-; ram:mem|mem~2507                         ; Lost fanout        ;
-; ram:mem|mem~2508                         ; Lost fanout        ;
-; ram:mem|mem~2509                         ; Lost fanout        ;
-; ram:mem|mem~2510                         ; Lost fanout        ;
-; ram:mem|mem~2511                         ; Lost fanout        ;
-; ram:mem|mem~2512                         ; Lost fanout        ;
-; ram:mem|mem~2513                         ; Lost fanout        ;
-; ram:mem|mem~2514                         ; Lost fanout        ;
-; ram:mem|mem~2515                         ; Lost fanout        ;
-; ram:mem|mem~2516                         ; Lost fanout        ;
-; ram:mem|mem~2517                         ; Lost fanout        ;
-; ram:mem|mem~2518                         ; Lost fanout        ;
-; ram:mem|mem~2519                         ; Lost fanout        ;
-; ram:mem|mem~2520                         ; Lost fanout        ;
-; ram:mem|mem~2521                         ; Lost fanout        ;
-; ram:mem|mem~2522                         ; Lost fanout        ;
-; ram:mem|mem~2523                         ; Lost fanout        ;
-; ram:mem|mem~2524                         ; Lost fanout        ;
-; ram:mem|mem~2525                         ; Lost fanout        ;
-; ram:mem|mem~2526                         ; Lost fanout        ;
-; ram:mem|mem~2527                         ; Lost fanout        ;
-; ram:mem|mem~2528                         ; Lost fanout        ;
-; ram:mem|mem~2529                         ; Lost fanout        ;
-; ram:mem|mem~2530                         ; Lost fanout        ;
-; ram:mem|mem~2531                         ; Lost fanout        ;
-; ram:mem|mem~2532                         ; Lost fanout        ;
-; ram:mem|mem~2533                         ; Lost fanout        ;
-; ram:mem|mem~2534                         ; Lost fanout        ;
-; ram:mem|mem~2535                         ; Lost fanout        ;
-; ram:mem|mem~2536                         ; Lost fanout        ;
-; ram:mem|mem~2537                         ; Lost fanout        ;
-; ram:mem|mem~2538                         ; Lost fanout        ;
-; ram:mem|mem~2539                         ; Lost fanout        ;
-; ram:mem|mem~2540                         ; Lost fanout        ;
-; ram:mem|mem~2541                         ; Lost fanout        ;
-; ram:mem|mem~2542                         ; Lost fanout        ;
-; ram:mem|mem~2543                         ; Lost fanout        ;
-; ram:mem|mem~2544                         ; Lost fanout        ;
-; ram:mem|mem~2545                         ; Lost fanout        ;
-; ram:mem|mem~2546                         ; Lost fanout        ;
-; ram:mem|mem~2547                         ; Lost fanout        ;
-; ram:mem|mem~2548                         ; Lost fanout        ;
-; ram:mem|mem~2549                         ; Lost fanout        ;
-; ram:mem|mem~2550                         ; Lost fanout        ;
-; ram:mem|mem~2551                         ; Lost fanout        ;
-; ram:mem|mem~2552                         ; Lost fanout        ;
-; ram:mem|mem~2553                         ; Lost fanout        ;
-; ram:mem|mem~2554                         ; Lost fanout        ;
-; ram:mem|mem~2555                         ; Lost fanout        ;
-; ram:mem|mem~2556                         ; Lost fanout        ;
-; ram:mem|mem~2557                         ; Lost fanout        ;
-; ram:mem|mem~2558                         ; Lost fanout        ;
-; ram:mem|mem~2559                         ; Lost fanout        ;
-; ram:mem|mem~2560                         ; Lost fanout        ;
-; ram:mem|mem~2561                         ; Lost fanout        ;
-; ram:mem|mem~2562                         ; Lost fanout        ;
-; ram:mem|mem~2563                         ; Lost fanout        ;
-; ram:mem|mem~2564                         ; Lost fanout        ;
-; ram:mem|mem~2565                         ; Lost fanout        ;
-; ram:mem|mem~2566                         ; Lost fanout        ;
-; ram:mem|mem~2567                         ; Lost fanout        ;
-; ram:mem|mem~2568                         ; Lost fanout        ;
-; ram:mem|mem~2569                         ; Lost fanout        ;
-; ram:mem|mem~2570                         ; Lost fanout        ;
-; ram:mem|mem~2571                         ; Lost fanout        ;
-; ram:mem|mem~2572                         ; Lost fanout        ;
-; ram:mem|mem~2573                         ; Lost fanout        ;
-; ram:mem|mem~2574                         ; Lost fanout        ;
-; ram:mem|mem~2575                         ; Lost fanout        ;
-; ram:mem|mem~2576                         ; Lost fanout        ;
-; ram:mem|mem~2577                         ; Lost fanout        ;
-; ram:mem|mem~2578                         ; Lost fanout        ;
-; ram:mem|mem~2579                         ; Lost fanout        ;
-; ram:mem|mem~2580                         ; Lost fanout        ;
-; ram:mem|mem~2581                         ; Lost fanout        ;
-; ram:mem|mem~2582                         ; Lost fanout        ;
-; ram:mem|mem~2583                         ; Lost fanout        ;
-; ram:mem|mem~2584                         ; Lost fanout        ;
-; ram:mem|mem~2585                         ; Lost fanout        ;
-; ram:mem|mem~2586                         ; Lost fanout        ;
-; ram:mem|mem~2587                         ; Lost fanout        ;
-; ram:mem|mem~2588                         ; Lost fanout        ;
-; ram:mem|mem~2589                         ; Lost fanout        ;
-; ram:mem|mem~2590                         ; Lost fanout        ;
-; ram:mem|mem~2591                         ; Lost fanout        ;
-; ram:mem|mem~2592                         ; Lost fanout        ;
-; ram:mem|mem~2593                         ; Lost fanout        ;
-; ram:mem|mem~2594                         ; Lost fanout        ;
-; ram:mem|mem~2595                         ; Lost fanout        ;
-; ram:mem|mem~2596                         ; Lost fanout        ;
-; ram:mem|mem~2597                         ; Lost fanout        ;
-; ram:mem|mem~2598                         ; Lost fanout        ;
-; ram:mem|mem~2599                         ; Lost fanout        ;
-; ram:mem|mem~2600                         ; Lost fanout        ;
-; ram:mem|mem~2601                         ; Lost fanout        ;
-; ram:mem|mem~2602                         ; Lost fanout        ;
-; ram:mem|mem~2603                         ; Lost fanout        ;
-; ram:mem|mem~2604                         ; Lost fanout        ;
-; ram:mem|mem~2605                         ; Lost fanout        ;
-; ram:mem|mem~2606                         ; Lost fanout        ;
-; ram:mem|mem~2607                         ; Lost fanout        ;
-; ram:mem|mem~2608                         ; Lost fanout        ;
-; ram:mem|mem~2609                         ; Lost fanout        ;
-; ram:mem|mem~2610                         ; Lost fanout        ;
-; ram:mem|mem~2611                         ; Lost fanout        ;
-; ram:mem|mem~2612                         ; Lost fanout        ;
-; ram:mem|mem~2613                         ; Lost fanout        ;
-; ram:mem|mem~2614                         ; Lost fanout        ;
-; ram:mem|mem~2615                         ; Lost fanout        ;
-; ram:mem|mem~2616                         ; Lost fanout        ;
-; ram:mem|mem~2617                         ; Lost fanout        ;
-; ram:mem|mem~2618                         ; Lost fanout        ;
-; ram:mem|mem~2619                         ; Lost fanout        ;
-; ram:mem|mem~2620                         ; Lost fanout        ;
-; ram:mem|mem~2621                         ; Lost fanout        ;
-; ram:mem|mem~2622                         ; Lost fanout        ;
-; ram:mem|mem~2623                         ; Lost fanout        ;
-; ram:mem|mem~2624                         ; Lost fanout        ;
-; ram:mem|mem~2625                         ; Lost fanout        ;
-; ram:mem|mem~2626                         ; Lost fanout        ;
-; ram:mem|mem~2627                         ; Lost fanout        ;
-; ram:mem|mem~2628                         ; Lost fanout        ;
-; ram:mem|mem~2629                         ; Lost fanout        ;
-; ram:mem|mem~2630                         ; Lost fanout        ;
-; ram:mem|mem~2631                         ; Lost fanout        ;
-; ram:mem|mem~2632                         ; Lost fanout        ;
-; ram:mem|mem~2633                         ; Lost fanout        ;
-; ram:mem|mem~2634                         ; Lost fanout        ;
-; ram:mem|mem~2635                         ; Lost fanout        ;
-; ram:mem|mem~2636                         ; Lost fanout        ;
-; ram:mem|mem~2637                         ; Lost fanout        ;
-; ram:mem|mem~2638                         ; Lost fanout        ;
-; ram:mem|mem~2639                         ; Lost fanout        ;
-; ram:mem|mem~2640                         ; Lost fanout        ;
-; ram:mem|mem~2641                         ; Lost fanout        ;
-; ram:mem|mem~2642                         ; Lost fanout        ;
-; ram:mem|mem~2643                         ; Lost fanout        ;
-; ram:mem|mem~2644                         ; Lost fanout        ;
-; ram:mem|mem~2645                         ; Lost fanout        ;
-; ram:mem|mem~2646                         ; Lost fanout        ;
-; ram:mem|mem~2647                         ; Lost fanout        ;
-; ram:mem|mem~2648                         ; Lost fanout        ;
-; ram:mem|mem~2649                         ; Lost fanout        ;
-; ram:mem|mem~2650                         ; Lost fanout        ;
-; ram:mem|mem~2651                         ; Lost fanout        ;
-; ram:mem|mem~2652                         ; Lost fanout        ;
-; ram:mem|mem~2653                         ; Lost fanout        ;
-; ram:mem|mem~2654                         ; Lost fanout        ;
-; ram:mem|mem~2655                         ; Lost fanout        ;
-; ram:mem|mem~2656                         ; Lost fanout        ;
-; ram:mem|mem~2657                         ; Lost fanout        ;
-; ram:mem|mem~2658                         ; Lost fanout        ;
-; ram:mem|mem~2659                         ; Lost fanout        ;
-; ram:mem|mem~2660                         ; Lost fanout        ;
-; ram:mem|mem~2661                         ; Lost fanout        ;
-; ram:mem|mem~2662                         ; Lost fanout        ;
-; ram:mem|mem~2663                         ; Lost fanout        ;
-; ram:mem|mem~2664                         ; Lost fanout        ;
-; ram:mem|mem~2665                         ; Lost fanout        ;
-; ram:mem|mem~2666                         ; Lost fanout        ;
-; ram:mem|mem~2667                         ; Lost fanout        ;
-; ram:mem|mem~2668                         ; Lost fanout        ;
-; ram:mem|mem~2669                         ; Lost fanout        ;
-; ram:mem|mem~2670                         ; Lost fanout        ;
-; ram:mem|mem~2671                         ; Lost fanout        ;
-; ram:mem|mem~2672                         ; Lost fanout        ;
-; ram:mem|mem~2673                         ; Lost fanout        ;
-; ram:mem|mem~2674                         ; Lost fanout        ;
-; ram:mem|mem~2675                         ; Lost fanout        ;
-; ram:mem|mem~2676                         ; Lost fanout        ;
-; ram:mem|mem~2677                         ; Lost fanout        ;
-; ram:mem|mem~2678                         ; Lost fanout        ;
-; ram:mem|mem~2679                         ; Lost fanout        ;
-; ram:mem|mem~2680                         ; Lost fanout        ;
-; ram:mem|mem~2681                         ; Lost fanout        ;
-; ram:mem|mem~2682                         ; Lost fanout        ;
-; ram:mem|mem~2683                         ; Lost fanout        ;
-; ram:mem|mem~2684                         ; Lost fanout        ;
-; ram:mem|mem~2685                         ; Lost fanout        ;
-; ram:mem|mem~2686                         ; Lost fanout        ;
-; ram:mem|mem~2687                         ; Lost fanout        ;
-; ram:mem|mem~2688                         ; Lost fanout        ;
-; ram:mem|mem~2689                         ; Lost fanout        ;
-; ram:mem|mem~2690                         ; Lost fanout        ;
-; ram:mem|mem~2691                         ; Lost fanout        ;
-; ram:mem|mem~2692                         ; Lost fanout        ;
-; ram:mem|mem~2693                         ; Lost fanout        ;
-; ram:mem|mem~2694                         ; Lost fanout        ;
-; ram:mem|mem~2695                         ; Lost fanout        ;
-; ram:mem|mem~2696                         ; Lost fanout        ;
-; ram:mem|mem~2697                         ; Lost fanout        ;
-; ram:mem|mem~2698                         ; Lost fanout        ;
-; ram:mem|mem~2699                         ; Lost fanout        ;
-; ram:mem|mem~2700                         ; Lost fanout        ;
-; ram:mem|mem~2701                         ; Lost fanout        ;
-; ram:mem|mem~2702                         ; Lost fanout        ;
-; ram:mem|mem~2703                         ; Lost fanout        ;
-; ram:mem|mem~2704                         ; Lost fanout        ;
-; ram:mem|mem~2705                         ; Lost fanout        ;
-; ram:mem|mem~2706                         ; Lost fanout        ;
-; ram:mem|mem~2707                         ; Lost fanout        ;
-; ram:mem|mem~2708                         ; Lost fanout        ;
-; ram:mem|mem~2709                         ; Lost fanout        ;
-; ram:mem|mem~2710                         ; Lost fanout        ;
-; ram:mem|mem~2711                         ; Lost fanout        ;
-; ram:mem|mem~2712                         ; Lost fanout        ;
-; ram:mem|mem~2713                         ; Lost fanout        ;
-; ram:mem|mem~2714                         ; Lost fanout        ;
-; ram:mem|mem~2715                         ; Lost fanout        ;
-; ram:mem|mem~2716                         ; Lost fanout        ;
-; ram:mem|mem~2717                         ; Lost fanout        ;
-; ram:mem|mem~2718                         ; Lost fanout        ;
-; ram:mem|mem~2719                         ; Lost fanout        ;
-; ram:mem|mem~2720                         ; Lost fanout        ;
-; ram:mem|mem~2721                         ; Lost fanout        ;
-; ram:mem|mem~2722                         ; Lost fanout        ;
-; ram:mem|mem~2723                         ; Lost fanout        ;
-; ram:mem|mem~2724                         ; Lost fanout        ;
-; ram:mem|mem~2725                         ; Lost fanout        ;
-; ram:mem|mem~2726                         ; Lost fanout        ;
-; ram:mem|mem~2727                         ; Lost fanout        ;
-; ram:mem|mem~2728                         ; Lost fanout        ;
-; ram:mem|mem~2729                         ; Lost fanout        ;
-; ram:mem|mem~2730                         ; Lost fanout        ;
-; ram:mem|mem~2731                         ; Lost fanout        ;
-; ram:mem|mem~2732                         ; Lost fanout        ;
-; ram:mem|mem~2733                         ; Lost fanout        ;
-; ram:mem|mem~2734                         ; Lost fanout        ;
-; ram:mem|mem~2735                         ; Lost fanout        ;
-; ram:mem|mem~2736                         ; Lost fanout        ;
-; ram:mem|mem~2737                         ; Lost fanout        ;
-; ram:mem|mem~2738                         ; Lost fanout        ;
-; ram:mem|mem~2739                         ; Lost fanout        ;
-; ram:mem|mem~2740                         ; Lost fanout        ;
-; ram:mem|mem~2741                         ; Lost fanout        ;
-; ram:mem|mem~2742                         ; Lost fanout        ;
-; ram:mem|mem~2743                         ; Lost fanout        ;
-; ram:mem|mem~2744                         ; Lost fanout        ;
-; ram:mem|mem~2745                         ; Lost fanout        ;
-; ram:mem|mem~2746                         ; Lost fanout        ;
-; ram:mem|mem~2747                         ; Lost fanout        ;
-; ram:mem|mem~2748                         ; Lost fanout        ;
-; ram:mem|mem~2749                         ; Lost fanout        ;
-; ram:mem|mem~2750                         ; Lost fanout        ;
-; ram:mem|mem~2751                         ; Lost fanout        ;
-; ram:mem|mem~2752                         ; Lost fanout        ;
-; ram:mem|mem~2753                         ; Lost fanout        ;
-; ram:mem|mem~2754                         ; Lost fanout        ;
-; ram:mem|mem~2755                         ; Lost fanout        ;
-; ram:mem|mem~2756                         ; Lost fanout        ;
-; ram:mem|mem~2757                         ; Lost fanout        ;
-; ram:mem|mem~2758                         ; Lost fanout        ;
-; ram:mem|mem~2759                         ; Lost fanout        ;
-; ram:mem|mem~2760                         ; Lost fanout        ;
-; ram:mem|mem~2761                         ; Lost fanout        ;
-; ram:mem|mem~2762                         ; Lost fanout        ;
-; ram:mem|mem~2763                         ; Lost fanout        ;
-; ram:mem|mem~2764                         ; Lost fanout        ;
-; ram:mem|mem~2765                         ; Lost fanout        ;
-; ram:mem|mem~2766                         ; Lost fanout        ;
-; ram:mem|mem~2767                         ; Lost fanout        ;
-; ram:mem|mem~2768                         ; Lost fanout        ;
-; ram:mem|mem~2769                         ; Lost fanout        ;
-; ram:mem|mem~2770                         ; Lost fanout        ;
-; ram:mem|mem~2771                         ; Lost fanout        ;
-; ram:mem|mem~2772                         ; Lost fanout        ;
-; ram:mem|mem~2773                         ; Lost fanout        ;
-; ram:mem|mem~2774                         ; Lost fanout        ;
-; ram:mem|mem~2775                         ; Lost fanout        ;
-; ram:mem|mem~2776                         ; Lost fanout        ;
-; ram:mem|mem~2777                         ; Lost fanout        ;
-; ram:mem|mem~2778                         ; Lost fanout        ;
-; ram:mem|mem~2779                         ; Lost fanout        ;
-; ram:mem|mem~2780                         ; Lost fanout        ;
-; ram:mem|mem~2781                         ; Lost fanout        ;
-; ram:mem|mem~2782                         ; Lost fanout        ;
-; ram:mem|mem~2783                         ; Lost fanout        ;
-; ram:mem|mem~2784                         ; Lost fanout        ;
-; ram:mem|mem~2785                         ; Lost fanout        ;
-; ram:mem|mem~2786                         ; Lost fanout        ;
-; ram:mem|mem~2787                         ; Lost fanout        ;
-; ram:mem|mem~2788                         ; Lost fanout        ;
-; ram:mem|mem~2789                         ; Lost fanout        ;
-; ram:mem|mem~2790                         ; Lost fanout        ;
-; ram:mem|mem~2791                         ; Lost fanout        ;
-; ram:mem|mem~2792                         ; Lost fanout        ;
-; ram:mem|mem~2793                         ; Lost fanout        ;
-; ram:mem|mem~2794                         ; Lost fanout        ;
-; ram:mem|mem~2795                         ; Lost fanout        ;
-; ram:mem|mem~2796                         ; Lost fanout        ;
-; ram:mem|mem~2797                         ; Lost fanout        ;
-; ram:mem|mem~2798                         ; Lost fanout        ;
-; ram:mem|mem~2799                         ; Lost fanout        ;
-; ram:mem|mem~2800                         ; Lost fanout        ;
-; ram:mem|mem~2801                         ; Lost fanout        ;
-; ram:mem|mem~2802                         ; Lost fanout        ;
-; ram:mem|mem~2803                         ; Lost fanout        ;
-; ram:mem|mem~2804                         ; Lost fanout        ;
-; ram:mem|mem~2805                         ; Lost fanout        ;
-; ram:mem|mem~2806                         ; Lost fanout        ;
-; ram:mem|mem~2807                         ; Lost fanout        ;
-; ram:mem|mem~2808                         ; Lost fanout        ;
-; ram:mem|mem~2809                         ; Lost fanout        ;
-; ram:mem|mem~2810                         ; Lost fanout        ;
-; ram:mem|mem~2811                         ; Lost fanout        ;
-; ram:mem|mem~2812                         ; Lost fanout        ;
-; ram:mem|mem~2813                         ; Lost fanout        ;
-; ram:mem|mem~2814                         ; Lost fanout        ;
-; ram:mem|mem~2815                         ; Lost fanout        ;
-; ram:mem|mem~2816                         ; Lost fanout        ;
-; ram:mem|mem~2817                         ; Lost fanout        ;
-; ram:mem|mem~2818                         ; Lost fanout        ;
-; ram:mem|mem~2819                         ; Lost fanout        ;
-; ram:mem|mem~2820                         ; Lost fanout        ;
-; ram:mem|mem~2821                         ; Lost fanout        ;
-; ram:mem|mem~2822                         ; Lost fanout        ;
-; ram:mem|mem~2823                         ; Lost fanout        ;
-; ram:mem|mem~2824                         ; Lost fanout        ;
-; ram:mem|mem~2825                         ; Lost fanout        ;
-; ram:mem|mem~2826                         ; Lost fanout        ;
-; ram:mem|mem~2827                         ; Lost fanout        ;
-; ram:mem|mem~2828                         ; Lost fanout        ;
-; ram:mem|mem~2829                         ; Lost fanout        ;
-; ram:mem|mem~2830                         ; Lost fanout        ;
-; ram:mem|mem~2831                         ; Lost fanout        ;
-; ram:mem|mem~2832                         ; Lost fanout        ;
-; ram:mem|mem~2833                         ; Lost fanout        ;
-; ram:mem|mem~2834                         ; Lost fanout        ;
-; ram:mem|mem~2835                         ; Lost fanout        ;
-; ram:mem|mem~2836                         ; Lost fanout        ;
-; ram:mem|mem~2837                         ; Lost fanout        ;
-; ram:mem|mem~2838                         ; Lost fanout        ;
-; ram:mem|mem~2839                         ; Lost fanout        ;
-; ram:mem|mem~2840                         ; Lost fanout        ;
-; ram:mem|mem~2841                         ; Lost fanout        ;
-; ram:mem|mem~2842                         ; Lost fanout        ;
-; ram:mem|mem~2843                         ; Lost fanout        ;
-; ram:mem|mem~2844                         ; Lost fanout        ;
-; ram:mem|mem~2845                         ; Lost fanout        ;
-; ram:mem|mem~2846                         ; Lost fanout        ;
-; ram:mem|mem~2847                         ; Lost fanout        ;
-; ram:mem|mem~2848                         ; Lost fanout        ;
-; ram:mem|mem~2849                         ; Lost fanout        ;
-; ram:mem|mem~2850                         ; Lost fanout        ;
-; ram:mem|mem~2851                         ; Lost fanout        ;
-; ram:mem|mem~2852                         ; Lost fanout        ;
-; ram:mem|mem~2853                         ; Lost fanout        ;
-; ram:mem|mem~2854                         ; Lost fanout        ;
-; ram:mem|mem~2855                         ; Lost fanout        ;
-; ram:mem|mem~2856                         ; Lost fanout        ;
-; ram:mem|mem~2857                         ; Lost fanout        ;
-; ram:mem|mem~2858                         ; Lost fanout        ;
-; ram:mem|mem~2859                         ; Lost fanout        ;
-; ram:mem|mem~2860                         ; Lost fanout        ;
-; ram:mem|mem~2861                         ; Lost fanout        ;
-; ram:mem|mem~2862                         ; Lost fanout        ;
-; ram:mem|mem~2863                         ; Lost fanout        ;
-; ram:mem|mem~2864                         ; Lost fanout        ;
-; ram:mem|mem~2865                         ; Lost fanout        ;
-; ram:mem|mem~2866                         ; Lost fanout        ;
-; ram:mem|mem~2867                         ; Lost fanout        ;
-; ram:mem|mem~2868                         ; Lost fanout        ;
-; ram:mem|mem~2869                         ; Lost fanout        ;
-; ram:mem|mem~2870                         ; Lost fanout        ;
-; ram:mem|mem~2871                         ; Lost fanout        ;
-; ram:mem|mem~2872                         ; Lost fanout        ;
-; ram:mem|mem~2873                         ; Lost fanout        ;
-; ram:mem|mem~2874                         ; Lost fanout        ;
-; ram:mem|mem~2875                         ; Lost fanout        ;
-; ram:mem|mem~2876                         ; Lost fanout        ;
-; ram:mem|mem~2877                         ; Lost fanout        ;
-; ram:mem|mem~2878                         ; Lost fanout        ;
-; ram:mem|mem~2879                         ; Lost fanout        ;
-; ram:mem|mem~2880                         ; Lost fanout        ;
-; ram:mem|mem~2881                         ; Lost fanout        ;
-; ram:mem|mem~2882                         ; Lost fanout        ;
-; ram:mem|mem~2883                         ; Lost fanout        ;
-; ram:mem|mem~2884                         ; Lost fanout        ;
-; ram:mem|mem~2885                         ; Lost fanout        ;
-; ram:mem|mem~2886                         ; Lost fanout        ;
-; ram:mem|mem~2887                         ; Lost fanout        ;
-; ram:mem|mem~2888                         ; Lost fanout        ;
-; ram:mem|mem~2889                         ; Lost fanout        ;
-; ram:mem|mem~2890                         ; Lost fanout        ;
-; ram:mem|mem~2891                         ; Lost fanout        ;
-; ram:mem|mem~2892                         ; Lost fanout        ;
-; ram:mem|mem~2893                         ; Lost fanout        ;
-; ram:mem|mem~2894                         ; Lost fanout        ;
-; ram:mem|mem~2895                         ; Lost fanout        ;
-; ram:mem|mem~2896                         ; Lost fanout        ;
-; ram:mem|mem~2897                         ; Lost fanout        ;
-; ram:mem|mem~2898                         ; Lost fanout        ;
-; ram:mem|mem~2899                         ; Lost fanout        ;
-; ram:mem|mem~2900                         ; Lost fanout        ;
-; ram:mem|mem~2901                         ; Lost fanout        ;
-; ram:mem|mem~2902                         ; Lost fanout        ;
-; ram:mem|mem~2903                         ; Lost fanout        ;
-; ram:mem|mem~2904                         ; Lost fanout        ;
-; ram:mem|mem~2905                         ; Lost fanout        ;
-; ram:mem|mem~2906                         ; Lost fanout        ;
-; ram:mem|mem~2907                         ; Lost fanout        ;
-; ram:mem|mem~2908                         ; Lost fanout        ;
-; ram:mem|mem~2909                         ; Lost fanout        ;
-; ram:mem|mem~2910                         ; Lost fanout        ;
-; ram:mem|mem~2911                         ; Lost fanout        ;
-; ram:mem|mem~2912                         ; Lost fanout        ;
-; ram:mem|mem~2913                         ; Lost fanout        ;
-; ram:mem|mem~2914                         ; Lost fanout        ;
-; ram:mem|mem~2915                         ; Lost fanout        ;
-; ram:mem|mem~2916                         ; Lost fanout        ;
-; ram:mem|mem~2917                         ; Lost fanout        ;
-; ram:mem|mem~2918                         ; Lost fanout        ;
-; ram:mem|mem~2919                         ; Lost fanout        ;
-; ram:mem|mem~2920                         ; Lost fanout        ;
-; ram:mem|mem~2921                         ; Lost fanout        ;
-; ram:mem|mem~2922                         ; Lost fanout        ;
-; ram:mem|mem~2923                         ; Lost fanout        ;
-; ram:mem|mem~2924                         ; Lost fanout        ;
-; ram:mem|mem~2925                         ; Lost fanout        ;
-; ram:mem|mem~2926                         ; Lost fanout        ;
-; ram:mem|mem~2927                         ; Lost fanout        ;
-; ram:mem|mem~2928                         ; Lost fanout        ;
-; ram:mem|mem~2929                         ; Lost fanout        ;
-; ram:mem|mem~2930                         ; Lost fanout        ;
-; ram:mem|mem~2931                         ; Lost fanout        ;
-; ram:mem|mem~2932                         ; Lost fanout        ;
-; ram:mem|mem~2933                         ; Lost fanout        ;
-; ram:mem|mem~2934                         ; Lost fanout        ;
-; ram:mem|mem~2935                         ; Lost fanout        ;
-; ram:mem|mem~2936                         ; Lost fanout        ;
-; ram:mem|mem~2937                         ; Lost fanout        ;
-; ram:mem|mem~2938                         ; Lost fanout        ;
-; ram:mem|mem~2939                         ; Lost fanout        ;
-; ram:mem|mem~2940                         ; Lost fanout        ;
-; ram:mem|mem~2941                         ; Lost fanout        ;
-; ram:mem|mem~2942                         ; Lost fanout        ;
-; ram:mem|mem~2943                         ; Lost fanout        ;
-; ram:mem|mem~2944                         ; Lost fanout        ;
-; ram:mem|mem~2945                         ; Lost fanout        ;
-; ram:mem|mem~2946                         ; Lost fanout        ;
-; ram:mem|mem~2947                         ; Lost fanout        ;
-; ram:mem|mem~2948                         ; Lost fanout        ;
-; ram:mem|mem~2949                         ; Lost fanout        ;
-; ram:mem|mem~2950                         ; Lost fanout        ;
-; ram:mem|mem~2951                         ; Lost fanout        ;
-; ram:mem|mem~2952                         ; Lost fanout        ;
-; ram:mem|mem~2953                         ; Lost fanout        ;
-; ram:mem|mem~2954                         ; Lost fanout        ;
-; ram:mem|mem~2955                         ; Lost fanout        ;
-; ram:mem|mem~2956                         ; Lost fanout        ;
-; ram:mem|mem~2957                         ; Lost fanout        ;
-; ram:mem|mem~2958                         ; Lost fanout        ;
-; ram:mem|mem~2959                         ; Lost fanout        ;
-; ram:mem|mem~2960                         ; Lost fanout        ;
-; ram:mem|mem~2961                         ; Lost fanout        ;
-; ram:mem|mem~2962                         ; Lost fanout        ;
-; ram:mem|mem~2963                         ; Lost fanout        ;
-; ram:mem|mem~2964                         ; Lost fanout        ;
-; ram:mem|mem~2965                         ; Lost fanout        ;
-; ram:mem|mem~2966                         ; Lost fanout        ;
-; ram:mem|mem~2967                         ; Lost fanout        ;
-; ram:mem|mem~2968                         ; Lost fanout        ;
-; ram:mem|mem~2969                         ; Lost fanout        ;
-; ram:mem|mem~2970                         ; Lost fanout        ;
-; ram:mem|mem~2971                         ; Lost fanout        ;
-; ram:mem|mem~2972                         ; Lost fanout        ;
-; ram:mem|mem~2973                         ; Lost fanout        ;
-; ram:mem|mem~2974                         ; Lost fanout        ;
-; ram:mem|mem~2975                         ; Lost fanout        ;
-; ram:mem|mem~2976                         ; Lost fanout        ;
-; ram:mem|mem~2977                         ; Lost fanout        ;
-; ram:mem|mem~2978                         ; Lost fanout        ;
-; ram:mem|mem~2979                         ; Lost fanout        ;
-; ram:mem|mem~2980                         ; Lost fanout        ;
-; ram:mem|mem~2981                         ; Lost fanout        ;
-; ram:mem|mem~2982                         ; Lost fanout        ;
-; ram:mem|mem~2983                         ; Lost fanout        ;
-; ram:mem|mem~2984                         ; Lost fanout        ;
-; ram:mem|mem~2985                         ; Lost fanout        ;
-; ram:mem|mem~2986                         ; Lost fanout        ;
-; ram:mem|mem~2987                         ; Lost fanout        ;
-; ram:mem|mem~2988                         ; Lost fanout        ;
-; ram:mem|mem~2989                         ; Lost fanout        ;
-; ram:mem|mem~2990                         ; Lost fanout        ;
-; ram:mem|mem~2991                         ; Lost fanout        ;
-; ram:mem|mem~2992                         ; Lost fanout        ;
-; ram:mem|mem~2993                         ; Lost fanout        ;
-; ram:mem|mem~2994                         ; Lost fanout        ;
-; ram:mem|mem~2995                         ; Lost fanout        ;
-; ram:mem|mem~2996                         ; Lost fanout        ;
-; ram:mem|mem~2997                         ; Lost fanout        ;
-; ram:mem|mem~2998                         ; Lost fanout        ;
-; ram:mem|mem~2999                         ; Lost fanout        ;
-; ram:mem|mem~3000                         ; Lost fanout        ;
-; ram:mem|mem~3001                         ; Lost fanout        ;
-; ram:mem|mem~3002                         ; Lost fanout        ;
-; ram:mem|mem~3003                         ; Lost fanout        ;
-; ram:mem|mem~3004                         ; Lost fanout        ;
-; ram:mem|mem~3005                         ; Lost fanout        ;
-; ram:mem|mem~3006                         ; Lost fanout        ;
-; ram:mem|mem~3007                         ; Lost fanout        ;
-; ram:mem|mem~3008                         ; Lost fanout        ;
-; ram:mem|mem~3009                         ; Lost fanout        ;
-; ram:mem|mem~3010                         ; Lost fanout        ;
-; ram:mem|mem~3011                         ; Lost fanout        ;
-; ram:mem|mem~3012                         ; Lost fanout        ;
-; ram:mem|mem~3013                         ; Lost fanout        ;
-; ram:mem|mem~3014                         ; Lost fanout        ;
-; ram:mem|mem~3015                         ; Lost fanout        ;
-; ram:mem|mem~3016                         ; Lost fanout        ;
-; ram:mem|mem~3017                         ; Lost fanout        ;
-; ram:mem|mem~3018                         ; Lost fanout        ;
-; ram:mem|mem~3019                         ; Lost fanout        ;
-; ram:mem|mem~3020                         ; Lost fanout        ;
-; ram:mem|mem~3021                         ; Lost fanout        ;
-; ram:mem|mem~3022                         ; Lost fanout        ;
-; ram:mem|mem~3023                         ; Lost fanout        ;
-; ram:mem|mem~3024                         ; Lost fanout        ;
-; ram:mem|mem~3025                         ; Lost fanout        ;
-; ram:mem|mem~3026                         ; Lost fanout        ;
-; ram:mem|mem~3027                         ; Lost fanout        ;
-; ram:mem|mem~3028                         ; Lost fanout        ;
-; ram:mem|mem~3029                         ; Lost fanout        ;
-; ram:mem|mem~3030                         ; Lost fanout        ;
-; ram:mem|mem~3031                         ; Lost fanout        ;
-; ram:mem|mem~3032                         ; Lost fanout        ;
-; ram:mem|mem~3033                         ; Lost fanout        ;
-; ram:mem|mem~3034                         ; Lost fanout        ;
-; ram:mem|mem~3035                         ; Lost fanout        ;
-; ram:mem|mem~3036                         ; Lost fanout        ;
-; ram:mem|mem~3037                         ; Lost fanout        ;
-; ram:mem|mem~3038                         ; Lost fanout        ;
-; ram:mem|mem~3039                         ; Lost fanout        ;
-; ram:mem|mem~3040                         ; Lost fanout        ;
-; ram:mem|mem~3041                         ; Lost fanout        ;
-; ram:mem|mem~3042                         ; Lost fanout        ;
-; ram:mem|mem~3043                         ; Lost fanout        ;
-; ram:mem|mem~3044                         ; Lost fanout        ;
-; ram:mem|mem~3045                         ; Lost fanout        ;
-; ram:mem|mem~3046                         ; Lost fanout        ;
-; ram:mem|mem~3047                         ; Lost fanout        ;
-; ram:mem|mem~3048                         ; Lost fanout        ;
-; ram:mem|mem~3049                         ; Lost fanout        ;
-; ram:mem|mem~3050                         ; Lost fanout        ;
-; ram:mem|mem~3051                         ; Lost fanout        ;
-; ram:mem|mem~3052                         ; Lost fanout        ;
-; ram:mem|mem~3053                         ; Lost fanout        ;
-; ram:mem|mem~3054                         ; Lost fanout        ;
-; ram:mem|mem~3055                         ; Lost fanout        ;
-; ram:mem|mem~3056                         ; Lost fanout        ;
-; ram:mem|mem~3057                         ; Lost fanout        ;
-; ram:mem|mem~3058                         ; Lost fanout        ;
-; ram:mem|mem~3059                         ; Lost fanout        ;
-; ram:mem|mem~3060                         ; Lost fanout        ;
-; ram:mem|mem~3061                         ; Lost fanout        ;
-; ram:mem|mem~3062                         ; Lost fanout        ;
-; ram:mem|mem~3063                         ; Lost fanout        ;
-; ram:mem|mem~3064                         ; Lost fanout        ;
-; ram:mem|mem~3065                         ; Lost fanout        ;
-; ram:mem|mem~3066                         ; Lost fanout        ;
-; ram:mem|mem~3067                         ; Lost fanout        ;
-; ram:mem|mem~3068                         ; Lost fanout        ;
-; ram:mem|mem~3069                         ; Lost fanout        ;
-; ram:mem|mem~3070                         ; Lost fanout        ;
-; ram:mem|mem~3071                         ; Lost fanout        ;
-; Total Number of Removed Registers = 1539 ;                    ;
-+------------------------------------------+--------------------+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; state~5                               ; Lost fanout        ;
+; state~6                               ; Lost fanout        ;
+; Total Number of Removed Registers = 2 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -1789,14 +283,42 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1567  ;
+; Total registers                              ; 31    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 17    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1549  ;
+; Number of registers using Clock Enable       ; 13    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++-------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions    ;
++----------------------+-------------------+------+
+; Register Name        ; Megafunction      ; Type ;
++----------------------+-------------------+------+
+; ram:mem|dout_a[0..2] ; ram:mem|mem_rtl_0 ; RAM  ;
+; ram:mem|dout_b[0..2] ; ram:mem|mem_rtl_1 ; RAM  ;
++----------------------+-------------------+------+
+
+
++------------------------------------------------------------------------------------+
+; Source assignments for ram:mem|altsyncram:mem_rtl_0|altsyncram_fih1:auto_generated ;
++---------------------------------+--------------------+------+----------------------+
+; Assignment                      ; Value              ; From ; To                   ;
++---------------------------------+--------------------+------+----------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                    ;
++---------------------------------+--------------------+------+----------------------+
+
+
++------------------------------------------------------------------------------------+
+; Source assignments for ram:mem|altsyncram:mem_rtl_1|altsyncram_fih1:auto_generated ;
++---------------------------------+--------------------+------+----------------------+
+; Assignment                      ; Value              ; From ; To                   ;
++---------------------------------+--------------------+------+----------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                    ;
++---------------------------------+--------------------+------+----------------------+
 
 
 +------------------------------------------------------+
@@ -1810,14 +332,166 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ram:mem"                                                                                                                                             ;
-+------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type  ; Severity ; Details                                                                                                                                         ;
-+------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; adr_in     ; Input ; Warning  ; Input port expression (9 bits) is smaller than the input port (10 bits) it drives.  Extra input bit(s) "adr_in[9..9]" will be connected to GND. ;
-; adr_out[9] ; Input ; Info     ; Stuck at GND                                                                                                                                    ;
-+------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ram:mem|altsyncram:mem_rtl_0               ;
++------------------------------------+---------------------------------------+----------------+
+; Parameter Name                     ; Value                                 ; Type           ;
++------------------------------------+---------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                     ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                    ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                   ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                    ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                   ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                     ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                             ; Untyped        ;
+; WIDTH_A                            ; 3                                     ; Untyped        ;
+; WIDTHAD_A                          ; 10                                    ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                  ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                          ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                  ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WIDTH_B                            ; 3                                     ; Untyped        ;
+; WIDTHAD_B                          ; 10                                    ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                  ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                          ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                     ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                     ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                  ; Untyped        ;
+; BYTE_SIZE                          ; 8                                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                             ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; INIT_FILE                          ; db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                     ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                 ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                 ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                     ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone IV E                          ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_fih1                       ; Untyped        ;
++------------------------------------+---------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ram:mem|altsyncram:mem_rtl_1               ;
++------------------------------------+---------------------------------------+----------------+
+; Parameter Name                     ; Value                                 ; Type           ;
++------------------------------------+---------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                     ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                    ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                   ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                    ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                   ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                     ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                             ; Untyped        ;
+; WIDTH_A                            ; 3                                     ; Untyped        ;
+; WIDTHAD_A                          ; 10                                    ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                  ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                          ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                  ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WIDTH_B                            ; 3                                     ; Untyped        ;
+; WIDTHAD_B                          ; 10                                    ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                  ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                          ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                     ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                     ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                  ; Untyped        ;
+; BYTE_SIZE                          ; 8                                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                             ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; INIT_FILE                          ; db/fpga-matrix.ram0_ram_1d0cf.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                     ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                 ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                 ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                     ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone IV E                          ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_fih1                       ; Untyped        ;
++------------------------------------+---------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                         ;
++-------------------------------------------+------------------------------+
+; Name                                      ; Value                        ;
++-------------------------------------------+------------------------------+
+; Number of entity instances                ; 2                            ;
+; Entity Instance                           ; ram:mem|altsyncram:mem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                    ;
+;     -- WIDTH_A                            ; 3                            ;
+;     -- NUMWORDS_A                         ; 1024                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                 ;
+;     -- WIDTH_B                            ; 3                            ;
+;     -- NUMWORDS_B                         ; 1024                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                    ;
+; Entity Instance                           ; ram:mem|altsyncram:mem_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                    ;
+;     -- WIDTH_A                            ; 3                            ;
+;     -- NUMWORDS_A                         ; 1024                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                 ;
+;     -- WIDTH_B                            ; 3                            ;
+;     -- NUMWORDS_B                         ; 1024                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                    ;
++-------------------------------------------+------------------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "ram:mem"        ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; adr_a[9] ; Input ; Info     ; Stuck at GND ;
++----------+-------+----------+--------------+
 
 
 +-----------------------------------------------------+
@@ -1826,23 +500,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 28                          ;
-; cycloneiii_ff         ; 1567                        ;
-;     ENA               ; 1549                        ;
+; cycloneiii_ff         ; 31                          ;
+;     ENA               ; 13                          ;
 ;     SLD               ; 17                          ;
 ;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 1616                        ;
+; cycloneiii_lcell_comb ; 41                          ;
 ;     arith             ; 19                          ;
 ;         2 data inputs ; 18                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 1597                        ;
+;     normal            ; 22                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 137                         ;
-;         3 data inputs ; 12                          ;
-;         4 data inputs ; 1442                        ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 3                           ;
+;         4 data inputs ; 8                           ;
+; cycloneiii_ram_block  ; 6                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 10.00                       ;
-; Average LUT depth     ; 6.35                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 1.80                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1861,20 +536,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Dec 05 12:25:33 2018
+    Info: Processing started: Sun Dec 09 09:51:35 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fpga-matrix -c fpga-matrix
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file fpga_matrix.sv
     Info (12023): Found entity 1: fpga_matrix File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 5
-    Info (12023): Found entity 2: ram File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 75
+    Info (12023): Found entity 2: ram File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 70
 Info (12127): Elaborating entity "fpga_matrix" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(27): truncated value with size 32 to match size of target (17) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 27
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(26): truncated value with size 32 to match size of target (17) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 26
 Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(32): truncated value with size 32 to match size of target (5) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 32
 Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(33): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 33
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(67): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 67
-Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(68): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 68
-Info (12128): Elaborating entity "ram" for hierarchy "ram:mem" File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 15
+Info (10264): Verilog HDL Case Statement information at fpga_matrix.sv(31): all case item expressions in this case statement are onehot File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 31
+Info (10264): Verilog HDL Case Statement information at fpga_matrix.sv(53): all case item expressions in this case statement are onehot File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 53
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(64): truncated value with size 32 to match size of target (4) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 64
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(65): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 65
+Warning (10230): Verilog HDL assignment warning at fpga_matrix.sv(66): truncated value with size 32 to match size of target (10) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 66
+Info (12128): Elaborating entity "ram" for hierarchy "ram:mem" File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 14
 Warning (10230): Verilog HDL assignment warning at memfile.dat(1): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 1
 Warning (10230): Verilog HDL assignment warning at memfile.dat(2): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 2
 Warning (10230): Verilog HDL assignment warning at memfile.dat(3): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 3
@@ -2899,25 +1577,92 @@ Warning (10230): Verilog HDL assignment warning at memfile.dat(1021): truncated 
 Warning (10230): Verilog HDL assignment warning at memfile.dat(1022): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 1022
 Warning (10230): Verilog HDL assignment warning at memfile.dat(1023): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 1023
 Warning (10230): Verilog HDL assignment warning at memfile.dat(1024): truncated value with size 4 to match size of target (3) File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/memfile.dat Line: 1024
-Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276007): RAM logic "ram:mem|mem" is uninferred due to asynchronous read logic File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 83
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (276027): Inferred dual-clock RAM node "ram:mem|mem_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "ram:mem|mem_rtl_1" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "ram:mem|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 3
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 3
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/fpga-matrix.ram0_ram_1d0cf.hdl.mif
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "ram:mem|mem_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 3
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 3
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/fpga-matrix.ram0_ram_1d0cf.hdl.mif
+Info (12130): Elaborated megafunction instantiation "ram:mem|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "ram:mem|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "3"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "3"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/fpga-matrix.ram0_ram_1d0cf.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fih1.tdf
+    Info (12023): Found entity 1: altsyncram_fih1 File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/db/altsyncram_fih1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "ram:mem|altsyncram:mem_rtl_1"
+Info (12133): Instantiated megafunction "ram:mem|altsyncram:mem_rtl_1" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "3"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "3"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/fpga-matrix.ram0_ram_1d0cf.hdl.mif"
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1539 registers lost all their fanouts during netlist optimizations.
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/output_files/fpga-matrix.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "adr_in[9]" File: C:/Users/mzug/OneDrive - Pomona College/e155/github-activity-led-matrix/FPGA-matrix/fpga_matrix.sv Line: 6
-Info (21057): Implemented 3184 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 80 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 3156 logic cells
+    Info (21061): Implemented 46 logic cells
+    Info (21064): Implemented 6 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1033 warnings
-    Info: Peak virtual memory: 4802 megabytes
-    Info: Processing ended: Wed Dec 05 12:25:44 2018
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:23
+    Info: Peak virtual memory: 4795 megabytes
+    Info: Processing ended: Sun Dec 09 09:51:48 2018
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:25
 
 
 +------------------------------------------+

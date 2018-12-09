@@ -5,10 +5,9 @@ from matrix import Matrix
 frame_queue = []
 
 frames = []
-for i in range(1, 36):
-  frame = imageio.imread('firework_pattern/firework-' + str(i) + '.png.png')
+for i in range(1, 7):
+  frame = imageio.imread('simon_pattern/Simon-' + str(i) + '.png.png')
   frames.append(frame)
-print(frames)
 
 
 def queue_frame(frame, conditional=lambda r, c: True):
@@ -24,6 +23,8 @@ def queue_frame(frame, conditional=lambda r, c: True):
   frame_queue.append(pixel_queue)
 
 
+print('start q')
+
 # First frame
 queue_frame(frames[0])
 
@@ -33,11 +34,13 @@ for i in range(1, len(frames)):
       frames[i],
       lambda row, col: any(frames[i][row][col] != frames[i - 1][row][col]))
 
+print('end q')
 
 if __name__ == '__main__':
   m = Matrix()
-  while(not empty(frame_queue)):
-    new_frame = frame_queue.pop(0)
-    for pixel in new_frame:
-      m.setPixel(pixel[0],''.join(pixel[1:]))
-
+  from time import sleep
+  while True:
+    for frame in frame_queue:
+      for pixel in frame:
+        m.setPixel(pixel[0], pixel[1:])
+      sleep(0.5)

@@ -100,7 +100,7 @@ VCCINT                       : 29        : power  :                   : 1.2V    
 row_address[1]               : 30        : output : 2.5 V             :         : 2         : Y              
 row_address[2]               : 31        : output : 2.5 V             :         : 2         : Y              
 row_address[3]               : 32        : output : 2.5 V             :         : 2         : Y              
-latch                        : 33        : output : 2.5 V             :         : 2         : Y              
+latch                        : 33        : output : 2.5 V             :         : 2         : N              
 outclk                       : 34        : output : 2.5 V             :         : 2         : Y              
 VCCA1                        : 35        : power  :                   : 2.5V    :           :                
 GNDA1                        : 36        : gnd    :                   :         :           :                

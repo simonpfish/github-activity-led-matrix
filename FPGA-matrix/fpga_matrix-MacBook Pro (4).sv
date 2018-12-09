@@ -11,7 +11,7 @@ module fpga_matrix(input logic clk, we,
 
   logic [9:0] adr_a, adr_b;
 
-  ram mem(clk, we, adr_in, adr_a, adr_b, rgb_in, rgb_a, rgb_b);
+  ram mem(clk, we, adr_in, adr_a, adr_b, in, rgb_a, rgb_b);
 
   typedef enum logic [2:0] {SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
 
@@ -48,11 +48,14 @@ module fpga_matrix(input logic clk, we,
       default: nextstate <= state;
     endcase
 
-   // Delay transition logic
+   // State transition logic
   always_comb
     case (state)
+      SHIFT_1: nextdelay <= 0;
+      SHIFT_0: nextdelay <= 0;
       BLANK:   nextdelay <= 200;
       LATCH:   nextdelay <= 100;
+      DISPLAY: nextdelay <= 0;
 
       default: nextdelay <= 0;
     endcase
@@ -82,10 +85,9 @@ module ram #(parameter N = 10, M = 3)
   initial
       $readmemh("memfile.dat",mem);
 
-  always_ff @(posedge we) 
-    mem [adr_in] <= din; 
-
-  always_ff @(posedge clk) begin  
+  always_ff @(posedge clk) begin
+    if (we) mem [adr_in] <= din; 
+  
     dout_a <= mem[adr_a]; 
     dout_b <= mem[adr_b]; 
   end

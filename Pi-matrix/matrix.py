@@ -5,6 +5,7 @@ address_pins = [18, 23, 24, 25, 8, 7, 12, 16, 20, 21]
 rgb_pins = [6, 13, 19]
 we_pin = 26
 
+
 class Matrix():
 
   def __init__(self):
@@ -24,11 +25,10 @@ class Matrix():
       else: self.adr_out[i].off()
 
     for i in range(len(rgb)):
-      if rgb[i] == '1': self.rgb_out[i].on()
+      if rgb[i]: self.rgb_out[i].on()
       else: self.rgb_out[i].off()
 
     self.we_out.on()
-    sleep(0.01)
     self.we_out.off()
 
 
@@ -36,10 +36,13 @@ if __name__ == "__main__":
   m = Matrix()
 
   for i in range(32 * 32):
-    m.setPixel(i, '011')
+    m.setPixel(i, [1 if x == '1' else 0 for x in bin(i)[-3:]])
+
+  sleep(0.5)
 
   for i in range(32 * 32):
-    m.setPixel(i, '000')
+    m.setPixel(i, [0, 0, 0])
+    sleep(0.1)
 
   while True:
     pass
