@@ -9,12 +9,11 @@ module fpga_matrix(input logic clk, we,
            output logic [3:0] row_address,
            output logic outclk, latch, eo );
 
-  logic [9:0] adr_out;
-  logic [2:0] d_out;
+  logic [9:0] adr_a, adr_b;
 
-  ram mem(clk, we, adr_in[8:0], adr_out, rgb_in, d_out);
+  ram mem(clk, we, adr_in, adr_a, adr_b, in, rgb_a, rgb_b);
 
-  typedef enum logic [2:0] {READ_A, READ_B, SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
+  typedef enum logic [2:0] {SHIFT_0, SHIFT_1, BLANK, LATCH, DISPLAY} statetype;
 
   statetype state, nextstate;
 
@@ -32,30 +31,16 @@ module fpga_matrix(input logic clk, we,
       case (state)
         SHIFT_1: shift_count <= shift_count + 1;
         LATCH: row_address <= row_address + 1;
-        READ_A: begin 
-          adr_out[9] <= 1;
-          rgb_a <= d_out;
-        end
-
-        READ_B: begin
-          adr_out[9] <= 0;
-          rgb_b <= d_out;
-        end
       endcase
-
     end
   end
 
   // State transition logic
   always_comb
     case (state)
-      READ_A: nextstate <= READ_B;
-      READ_B: nextstate <= SHIFT_1;
-
       SHIFT_1: nextstate <= SHIFT_0;
       SHIFT_0: if (shift_count == 0) nextstate <= BLANK;
-               else nextstate <= READ_A;
-      
+					     else nextstate <= SHIFT_1;
       BLANK:   nextstate <= LATCH;
       LATCH:   nextstate <= DISPLAY;
       DISPLAY: nextstate <= SHIFT_1;
@@ -80,7 +65,8 @@ module fpga_matrix(input logic clk, we,
   assign eo = (state == BLANK) || (state == LATCH);
   assign latch = (state == LATCH);
   assign next_row_address = row_address + 1;
-  assign adr_out[8:0] = (next_row_address * 32) + shift_count;
+  assign adr_a = (next_row_address * 32) + shift_count;
+  assign adr_b = adr_a + 512; 
 
 endmodule
 
@@ -88,18 +74,22 @@ module ram #(parameter N = 10, M = 3)
             (input logic clk, 
             input logic we, 
             input logic [N-1:0] adr_in,
-            input logic [N-1:0] adr_out, 
-            input logic [M-1:0] d_in, 
-            output logic [M-1:0] d_out); 
+            input logic [N-1:0] adr_a, 
+            input logic [N-1:0] adr_b, 
+            input logic [M-1:0] din, 
+            output logic [M-1:0] dout_a,
+            output logic [M-1:0] dout_b); 
   
   logic [M-1:0] mem [2**N-1:0]; 
 
   initial
       $readmemh("memfile.dat",mem);
 
-  always_ff @(posedge we) 
-      mem [adr_in] <= d_in;
+  always_ff @(posedge clk) begin
+    if (we) mem [adr_in] <= din; 
   
-  assign d_out = mem[adr_out];
+    dout_a <= mem[adr_a]; 
+    dout_b <= mem[adr_b]; 
+  end
 
 endmodule
