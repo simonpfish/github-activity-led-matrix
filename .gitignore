@@ -70,3 +70,6 @@ timing
 
 #MacOS
 .DS_Store
+
+matrix
+word_frames

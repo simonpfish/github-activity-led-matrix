@@ -1,9 +1,11 @@
 #include "EasyPIO.h"
 #include "frames/Simon.c"
+#include "frames/alphabet.c"
 #include "frames/firework.c"
 #include "frames/meteors.c"
 #include "frames/snow_angel.c"
 #include <stdio.h>
+#include <string.h>
 
 const int ADR_PINS[] = {21, 20, 16, 12, 7, 8, 25, 24, 23, 18};
 const int RGB_PINS[] = {6, 13, 19};
@@ -65,10 +67,53 @@ void displayAnim(const uint32_t frames[][1024], int length, int framerate) {
   }
 }
 
+void addLetter(uint32_t frame[1024], char letter, int offset) {
+
+  int letter_index = letter - 65;
+
+  for (int i = 0; i < 5 * 7; i++) {
+    if (i % 5 + offset < 0 || i % 5 + offset > 31) // avoids overflows
+      continue;
+
+    int row_offset = 32 * (i / 5);
+    frame[row_offset + (i % 5) + offset] = alphabet_data[letter_index][i];
+  }
+}
+
+void addString(uint32_t frame[1024], char string[], int scroll) {
+  int word_length = strlen(string);
+
+  for (int i = 0; i < word_length; i++) {
+    int offset = 6 * i - scroll;
+    if (offset > 31)
+      continue;
+
+    addLetter(frame, string[i], offset);
+  }
+}
+
+void scrollString(char string[]) {
+  for (int i = 0; i < 100; i++) {
+    uint32_t frame[1024] = {0x00000000};
+    addString(frame, string, i);
+    displayFrame(frame);
+    delayMillis(200);
+  }
+}
+
 int main(int argc, char const *argv[]) {
   pioInit();
   matrixInit();
 
-  // displayAnimation(meteors_data, METEORS_FRAME_COUNT, 0);
-  displayAnim(firework_data, FIREWORK_FRAME_COUNT, 6);
+  if (argc == 1) {
+    printf("You must enter the name of an animation to display \n");
+    return 1;
+  }
+
+  if (strcmp(argv[1], "anim-firework") == 0)
+    displayAnim(firework_data, FIREWORK_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-meteors") == 0)
+    displayAnim(meteors_data, METEORS_FRAME_COUNT, 6);
+  else
+    scrollString((char *)argv[1]);
 }

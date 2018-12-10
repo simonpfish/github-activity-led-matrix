@@ -2,6 +2,8 @@
 // Main server code for GitHub App that listens to user's actions
 // Maddie Zug & Simon Posada Fishman
 
+const { execFile } = require('child_process')
+
 module.exports = app => {
   app.log('Yay, the app was loaded!')
 
@@ -24,10 +26,18 @@ module.exports = app => {
   })
 
   app.on('push', async context => {
-    console.log(context)
+    execFile('../c/matrix', ['firework'], (error, stdout, stderr) => {
+      if (error) {
+        throw error
+      }
+    })
   })
 
   app.on('pull_request', async context => {
-    console.log(context)
+    execFile('../c/matrix', ['meteors'], (error, stdout, stderr) => {
+      if (error) {
+        throw error
+      }
+    })
   })
 }
