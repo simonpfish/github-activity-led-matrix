@@ -1,4 +1,6 @@
+#include "./patterns/frames/firework.c"
 #include "EasyPIO.h"
+#include <stdio.h>
 
 const int ADR_PINS[] = {21, 20, 16, 12, 7, 8, 25, 24, 23, 18};
 const int RGB_PINS[] = {6, 13, 19};
@@ -40,12 +42,21 @@ void setPixel(int adr, int rgb) {
   digitalWrite(WE_PIN, 0);
 }
 
+void setFrame(int adr, int rgb) {
+  writeAdr(adr);
+  writeRGB(rgb);
+
+  digitalWrite(WE_PIN, 1);
+  digitalWrite(WE_PIN, 0);
+}
+
 int main(int argc, char const *argv[]) {
   pioInit();
   matrixInit();
 
-  for (size_t i = 0; i < 32 * 32; i++) {
-    setPixel(i, 0);
+  int adr, rgb;
+  while (scanf("%d %d", &adr, &rgb) != EOF) {
+    setPixel(adr, rgb);
   }
 
   return 0;

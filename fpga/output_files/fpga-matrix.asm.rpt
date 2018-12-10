@@ -1,5 +1,5 @@
 Assembler report for fpga-matrix
-Sun Dec 09 10:25:05 2018
+Sun Dec 09 12:40:30 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Dec 09 10:25:05 2018 ;
+; Assembler Status      ; Successful - Sun Dec 09 12:40:30 2018 ;
 ; Revision Name         ; fpga-matrix                           ;
 ; Top-level Entity Name ; fpga_matrix                           ;
 ; Family                ; Cyclone IV E                          ;
@@ -77,14 +77,14 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Dec 09 10:25:04 2018
+    Info: Processing started: Sun Dec 09 12:40:29 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off fpga-matrix -c fpga-matrix
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4692 megabytes
-    Info: Processing ended: Sun Dec 09 10:25:05 2018
+    Info: Processing ended: Sun Dec 09 12:40:30 2018
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
