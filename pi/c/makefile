@@ -9,10 +9,10 @@ CFLAGS  = -g
 # the build target executable:
 TARGET = matrix
 
-all: alphabet; matrix;
+all: word_frames; matrix;
 
-alphabet: alphabet.c
-	$(CC) $(CFLAGS) -o alphabet alphabet.c
+word_frames: word_frames.c
+	$(CC) $(CFLAGS) -o word_frames word_frames.c
 
 matrix: matrix.c
 	$(CC) $(CFLAGS) -o matrix matrix.c
