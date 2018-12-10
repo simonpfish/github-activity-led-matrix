@@ -35,9 +35,11 @@ def queue_letter_pixels(letter, top_left_address):
       r, g, b = [1 if bool(p) else 0 for p in pixel[0:3]]
       address = top_left_address + (row * 32) + col
       pixel_queue.append((address, r, g, b))
+  # Padding for the 6th column
   for row in range(0, len(frame)+1):
     address = top_left_address + (row * 32) + len(frame[0])
     pixel_queue.append((address, 0, 0, 0))
+  # Padding for the 8th row
   for col in range(0, len(frame[0])+1):
     address = top_left_address + (len(frame) * 32) + col
     pixel_queue.append((address, 0, 0, 0))
