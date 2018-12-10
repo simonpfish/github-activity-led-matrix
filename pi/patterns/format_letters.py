@@ -5,15 +5,15 @@ import string
 LETTER_WIDTH = 6
 NUM_LETTERS = 32//6
 
-letters = list(string.ascii_lowercase)
-
 frame_queue = []
 pixel_queue = []
 
-letter_frames = {}
-for i in range(26):
-  frame = imageio.imread('frames/alphabet/alphabet' + str(i) + '.png')
-  letter_frames[letters[i]] = frame
+def load_letter_frames():
+  letters = list(string.ascii_lowercase)
+  letter_frames = {}
+  for i in range(26):
+    frame = imageio.imread('frames/alphabet/alphabet' + str(i) + '.png')
+    letter_frames[letters[i]] = frame
 
 def create_word_frame(word, start_address):
   frame_queue = []
