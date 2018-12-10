@@ -1,5 +1,5 @@
-#include "./patterns/frames/firework.c"
 #include "EasyPIO.h"
+#include "frames/firework.c"
 #include <stdio.h>
 
 const int ADR_PINS[] = {21, 20, 16, 12, 7, 8, 25, 24, 23, 18};

@@ -9,10 +9,13 @@ CFLAGS  = -g
 # the build target executable:
 TARGET = matrix
 
-all: $(TARGET)
+all: alphabet; matrix;
 
-$(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
+alphabet: alphabet.c
+	$(CC) $(CFLAGS) -o alphabet alphabet.c
+
+matrix: matrix.c
+	$(CC) $(CFLAGS) -o matrix matrix.c
 
 clean:
 	$(RM) $(TARGET)
