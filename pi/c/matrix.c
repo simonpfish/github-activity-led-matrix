@@ -68,15 +68,16 @@ void displayAnim(const uint32_t frames[][1024], int length, int framerate) {
 }
 
 void addLetter(uint32_t frame[1024], char letter, int offset) {
-
   int letter_index = letter - 65;
 
   for (int i = 0; i < 5 * 7; i++) {
-    if (i % 5 + offset < 0 || i % 5 + offset > 31) // avoids overflows
+    int row = (i / 5);
+    int col = (i % 5) + offset;
+
+    if (col < 0 || col > 31) // avoids overflows
       continue;
 
-    int row_offset = 32 * (i / 5);
-    frame[row_offset + (i % 5) + offset] = alphabet_data[letter_index][i];
+    frame[32 * row + col] = alphabet_data[letter_index][i];
   }
 }
 
@@ -92,12 +93,20 @@ void addString(uint32_t frame[1024], char string[], int scroll) {
   }
 }
 
-void scrollString(char string[]) {
-  for (int i = 0; i < 100; i++) {
+void scrollString(char string[], int loops) {
+  int length = strlen(string) * 6;
+
+  for (int i = 0; i < length * loops; i++) {
     uint32_t frame[1024] = {0x00000000};
-    addString(frame, string, i);
+    addString(frame, string, i % length);
     displayFrame(frame);
     delayMillis(200);
+  }
+}
+
+void overlayFrames(uint32_t frame_a[1024], uint32_t frame_b[1024]) {
+  for (int i = 0; i < 1024; i++) {
+    frame_a[i] = frame_b[i];
   }
 }
 
@@ -115,5 +124,5 @@ int main(int argc, char const *argv[]) {
   else if (strcmp(argv[1], "anim-meteors") == 0)
     displayAnim(meteors_data, METEORS_FRAME_COUNT, 6);
   else
-    scrollString((char *)argv[1]);
+    scrollString((char *)argv[1], 1);
 }
