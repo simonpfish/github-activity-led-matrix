@@ -69,15 +69,21 @@ void displayAnim(const uint32_t frames[][1024], int length, int framerate) {
   }
 }
 
-void addLetter(uint32_t frame[1024], char letter, int offset) {
-  int letter_index = letter - 65;
+void addCharacter(uint32_t frame[1024], char character, int offset) {
+
+  int char_index;
+  if(character > 64){ //Capital alphabetic character
+    char_index = character - 55;
+  }else{ //Digit
+    char_index = character -48;
+  }
 
   for (int i = 0; i < 5 * 7; i++) {
     int row = (i / 5);
     int col = (i % 5) + offset;
 
     if (-1 < col && col < 32)
-      frame[32 * row + col] = alphabet_data[letter_index][i];
+      frame[32 * row + col] = alphabet_data[char_index][i];
   }
 }
 
@@ -89,7 +95,7 @@ void addString(uint32_t frame[1024], char string[], int scroll) {
     if (offset > 31)
       continue;
 
-    addLetter(frame, string[i], offset);
+    addCharacter(frame, string[i], offset);
   }
 }
 
