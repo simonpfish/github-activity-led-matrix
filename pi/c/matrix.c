@@ -2,6 +2,7 @@
 #include "frames/Simon.c"
 #include "frames/alphabet.c"
 #include "frames/firework.c"
+#include "frames/flowers.c"
 #include "frames/meteors.c"
 #include "frames/rainbow_explosion.c"
 #include "frames/snow_angel.c"
@@ -69,25 +70,28 @@ void displayAnim(const uint32_t frames[][1024], int length, int framerate) {
   }
 }
 
-void addCharacter(uint32_t frame[1024], char character, int offset) {
+void addCharacter(uint32_t frame[1024], char character, int xoffset,
+                  int yoffset) {
 
   int char_index;
   if (character > 64) { // Capital alphabetic character
     char_index = character - 55;
+  } else if (character == 32) {
+    char_index = 36;
   } else { // Digit
     char_index = character - 48;
   }
 
   for (int i = 0; i < 5 * 7; i++) {
-    int row = (i / 5);
-    int col = (i % 5) + offset;
+    int row = (i / 5) + yoffset;
+    int col = (i % 5) + xoffset;
 
     if (-1 < col && col < 32)
       frame[32 * row + col] = alphabet_data[char_index][i];
   }
 }
 
-void addString(uint32_t frame[1024], char string[], int scroll) {
+void addString(uint32_t frame[1024], char string[], int scroll, int yoffset) {
   int word_length = strlen(string);
 
   for (int i = 0; i < word_length; i++) {
@@ -95,17 +99,17 @@ void addString(uint32_t frame[1024], char string[], int scroll) {
     if (offset > 31)
       continue;
 
-    addCharacter(frame, string[i], offset);
+    addCharacter(frame, string[i], offset, yoffset);
   }
 }
 
-void scrollString(char string[], int loops) {
+void scrollString(char string[], int loops, int yoffset) {
   int length = strlen(string) * 6;
 
   for (int loop = 0; loop < loops; loop++) {
     for (int i = -32; i < length; i++) {
       uint32_t frame[1024] = {0x00000000};
-      addString(frame, string, i);
+      addString(frame, string, i, yoffset);
       displayFrame(frame);
       delayMillis(200);
     }
@@ -121,14 +125,16 @@ int main(int argc, char const *argv[]) {
     return 1;
   }
 
-  if (strcmp(argv[1], "anim-firework") == 0)
+  if (strcmp(argv[1], "firework") == 0)
     displayAnim(firework_data, FIREWORK_FRAME_COUNT, 6);
-  else if (strcmp(argv[1], "anim-meteors") == 0)
+  else if (strcmp(argv[1], "meteors") == 0)
     displayAnim(meteors_data, METEORS_FRAME_COUNT, 6);
-  else if (strcmp(argv[1], "anim-storm") == 0)
+  else if (strcmp(argv[1], "storm") == 0)
     displayAnim(storm_data, STORM_FRAME_COUNT, 6);
-  else if (strcmp(argv[1], "anim-rainbow-explosion") == 0)
+  else if (strcmp(argv[1], "rainbow-explosion") == 0)
     displayAnim(rainbow_explosion_data, RAINBOW_EXPLOSION_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "flowers") == 0)
+    displayAnim(flowers_data, FLOWERS_FRAME_COUNT, 6);
   else
-    scrollString((char *)argv[1], 1);
+    scrollString((char *)argv[1], 1, 12);
 }
