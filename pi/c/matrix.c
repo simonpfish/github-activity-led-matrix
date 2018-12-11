@@ -4,6 +4,8 @@
 #include "frames/firework.c"
 #include "frames/meteors.c"
 #include "frames/snow_angel.c"
+#include "frames/rainbow_explosion.c"
+#include "frames/storm.c"
 #include <stdio.h>
 #include <string.h>
 
@@ -123,6 +125,10 @@ int main(int argc, char const *argv[]) {
     displayAnim(firework_data, FIREWORK_FRAME_COUNT, 6);
   else if (strcmp(argv[1], "anim-meteors") == 0)
     displayAnim(meteors_data, METEORS_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-storm") == 0)
+    displayAnim(storm_data, STORM_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-rainbow-explosion") == 0)
+    displayAnim(rainbow_explosion_data, RAINBOW_EXPLOSION_FRAME_COUNT, 6);
   else
     scrollString((char *)argv[1], 1);
 }
