@@ -72,10 +72,10 @@ void displayAnim(const uint32_t frames[][1024], int length, int framerate) {
 void addCharacter(uint32_t frame[1024], char character, int offset) {
 
   int char_index;
-  if(character > 64){ //Capital alphabetic character
+  if (character > 64) { // Capital alphabetic character
     char_index = character - 55;
-  }else{ //Digit
-    char_index = character -48;
+  } else { // Digit
+    char_index = character - 48;
   }
 
   for (int i = 0; i < 5 * 7; i++) {
@@ -112,31 +112,6 @@ void scrollString(char string[], int loops) {
   }
 }
 
-uint32_t *overlayFrames(uint32_t frame_a[1024], uint32_t frame_b[1024]) {
-  uint32_t frame[1024] = {0x00000000};
-
-  for (int i = 0; i < 1024; i++) {
-    frame[i] = frame_a[i];
-    frame[i] = frame_b[i];
-  }
-
-  return frame;
-}
-
-void displayAnimWithString(const uint32_t frames[][1024], int length,
-                           int framerate, char string[], int loops) {
-  int length = strlen(string) * 6;
-
-  for (int loop = 0; loop < loops; loop++) {
-    for (int i = -32; i < length; i++) {
-      uint32_t string_frame[1024] = {0x00000000};
-      addString(string_frame, string, i);
-      displayFrame(overlayFrames(string_frame, frames[i % length]));
-      delayMillis(1000 / framerate);
-    }
-  }
-}
-
 int main(int argc, char const *argv[]) {
   pioInit();
   matrixInit();
@@ -146,28 +121,14 @@ int main(int argc, char const *argv[]) {
     return 1;
   }
 
-  int framecount = 0;
-  uint32_t *frames[1024] = {};
-
-  if (argc >= 2) {
-    if (strcmp(argv[1], "firework") == 0) {
-      const frames = firework_data;
-      framecount = FIREWORK_FRAME_COUNT;
-    } else if (strcmp(argv[1], "meteors") == 0) {
-      const frames = meteors_data;
-      framecount = METEORS_FRAME_COUNT;
-    } else if (strcmp(argv[1], "storm") == 0) {
-      const frames = storm_data;
-      framecount = STORM_FRAME_COUNT;
-    } else if (strcmp(argv[1], "rainbow-explosion") == 0) {
-      const frames = rainbow_explosion_data;
-      framecount = RAINBOW_EXPLOSION_FRAME_COUNT;
-    }
-  }
-
-  if (argc == 2) {
-    displayAnim(frames, framecount, 6);
-  } else if (argc == 3) {
-    displayAnimWithString(frames, framecount, 6, argv[2], 2);
-  }
+  if (strcmp(argv[1], "anim-firework") == 0)
+    displayAnim(firework_data, FIREWORK_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-meteors") == 0)
+    displayAnim(meteors_data, METEORS_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-storm") == 0)
+    displayAnim(storm_data, STORM_FRAME_COUNT, 6);
+  else if (strcmp(argv[1], "anim-rainbow-explosion") == 0)
+    displayAnim(rainbow_explosion_data, RAINBOW_EXPLOSION_FRAME_COUNT, 6);
+  else
+    scrollString((char *)argv[1], 1);
 }
