@@ -5,6 +5,13 @@
 const { execFile } = require('child_process')
 const bodyParser = require('body-parser')
 
+const TEXT_COMMAND = '../c/matrix_text'
+const ANIM_COMMAND = '../c/matrix_anim'
+const ANIMATIONS = ['firework', 'meteors', 'storm', 'rainbow-explosion', 'flowers']
+
+let command_queue = []
+let contribution_ctr = 0
+
 module.exports = app => {
   app.log('Yay, the app was loaded!')
 
@@ -29,13 +36,13 @@ module.exports = app => {
   app.on('push', async context => {
     console.log(context.payload.head_commit.author)
 
-    execFile('../c/matrix', ['firework'], (error, stdout, stderr) => {
-      execFile('../c/matrix', [context.payload.head_commit.message.toUpperCase()])
-    })
-  })
+    contribution_ctr += 1
 
-  app.on('pull_request', async context => {
-    execFile('../c/matrix', ['meteors'], (error, stdout, stderr) => {})
+    command_queue.push([ANIM_COMMAND, [ANIMATIONS[Math.floor(Math.random() * ANIMATIONS.length)]]])
+    command_queue.push([
+      TEXT_COMMAND,
+      [context.payload.pusher.name + ' -> ' + context.payload.head_commit.message]
+    ])
   })
 
   const router = app.route('/display')
@@ -46,3 +53,18 @@ module.exports = app => {
     res.send('Displaying: ' + text)
   })
 }
+
+function execute_next() {
+  if (command_queue.length > 0) {
+    const [command, args] = command_queue.shift()
+    execFile(command, args, (error, stdout, stderr) => {
+      execute_next()
+    })
+  } else {
+    execFile(TEXT_COMMAND, [`TODAY:${contribution_ctr}`], (error, stdout, stderr) => {
+      execute_next()
+    })
+  }
+}
+
+execute_next()
