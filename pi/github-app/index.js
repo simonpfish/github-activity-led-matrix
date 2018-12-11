@@ -11,6 +11,7 @@ const ANIMATIONS = ['firework', 'meteors', 'storm', 'rainbow-explosion', 'flower
 
 let command_queue = []
 let contribution_ctr = 0
+setTimeout(() => (contribution_ctr = 0), 86400000)
 
 module.exports = app => {
   app.log('Yay, the app was loaded!')
@@ -48,9 +49,8 @@ module.exports = app => {
   const router = app.route('/display')
   router.use(bodyParser.urlencoded({ extended: false }))
   router.get('/', (req, res) => {
-    let text = req.query.text.toUpperCase()
-    execFile('../c/matrix', [text], (error, stdout, stderr) => {})
-    res.send('Displaying: ' + text)
+    let text = req.query.text
+    command_queue.push([TEXT_COMMAND, ['##' + text + '##']])
   })
 }
 
