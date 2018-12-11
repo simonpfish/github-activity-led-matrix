@@ -74,10 +74,8 @@ void addLetter(uint32_t frame[1024], char letter, int offset) {
     int row = (i / 5);
     int col = (i % 5) + offset;
 
-    if (col < 0 || col > 31) // avoids overflows
-      continue;
-
-    frame[32 * row + col] = alphabet_data[letter_index][i];
+    if (-1 < col && col < 32)
+      frame[32 * row + col] = alphabet_data[letter_index][i];
   }
 }
 
@@ -96,11 +94,13 @@ void addString(uint32_t frame[1024], char string[], int scroll) {
 void scrollString(char string[], int loops) {
   int length = strlen(string) * 6;
 
-  for (int i = 0; i < length * loops; i++) {
-    uint32_t frame[1024] = {0x00000000};
-    addString(frame, string, i % length);
-    displayFrame(frame);
-    delayMillis(200);
+  for (int loop = 0; loop < loops; loop++) {
+    for (int i = -32; i < length; i++) {
+      uint32_t frame[1024] = {0x00000000};
+      addString(frame, string, i);
+      displayFrame(frame);
+      delayMillis(200);
+    }
   }
 }
 
