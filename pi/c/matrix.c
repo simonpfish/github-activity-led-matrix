@@ -1,6 +1,6 @@
 #include "EasyPIO.h"
 #include "frames/Simon.c"
-#include "frames/alphabet.c"
+#include "frames/characters.c"
 #include "frames/firework.c"
 #include "frames/flowers.c"
 #include "frames/meteors.c"
@@ -74,12 +74,10 @@ void addCharacter(uint32_t frame[1024], char character, int xoffset,
                   int yoffset) {
 
   int char_index;
-  if (character > 64) { // Capital alphabetic character
-    char_index = character - 55;
-  } else if (character == 32) {
-    char_index = 36;
-  } else { // Digit
-    char_index = character - 48;
+  if (character < 32) { // Don't accept these characters
+    char_index = 0;
+  } else{
+    char_index = character-32;
   }
 
   for (int i = 0; i < 5 * 7; i++) {
@@ -87,7 +85,7 @@ void addCharacter(uint32_t frame[1024], char character, int xoffset,
     int col = (i % 5) + xoffset;
 
     if (-1 < col && col < 32)
-      frame[32 * row + col] = alphabet_data[char_index][i];
+      frame[32 * row + col] = characters_data[char_index][i];
   }
 }
 
