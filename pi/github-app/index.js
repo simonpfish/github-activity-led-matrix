@@ -27,7 +27,11 @@ module.exports = app => {
   })
 
   app.on('push', async context => {
-    execFile('../c/matrix', ['firework'], (error, stdout, stderr) => {})
+    console.log(context.payload.head_commit.author)
+
+    execFile('../c/matrix', ['firework'], (error, stdout, stderr) => {
+      execFile('../c/matrix', [context.payload.head_commit.message.toUpperCase()])
+    })
   })
 
   app.on('pull_request', async context => {

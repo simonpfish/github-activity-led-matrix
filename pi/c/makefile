@@ -9,13 +9,13 @@ CFLAGS  = -g
 # the build target executable:
 TARGET = matrix
 
-all: word_frames; matrix;
+all: matrix_anim matrix_text
 
-word_frames: word_frames.c
-	$(CC) $(CFLAGS) -o word_frames word_frames.c
+matrix_anim: matrix_anim.c
+	$(CC) $(CFLAGS) -o matrix_anim matrix_anim.c
 
-matrix: matrix.c
-	$(CC) $(CFLAGS) -o matrix matrix.c
+matrix_text: matrix_text.c
+	$(CC) $(CFLAGS) -o matrix_text matrix_text.c
 
 clean:
 	$(RM) $(TARGET)
