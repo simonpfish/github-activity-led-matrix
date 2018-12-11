@@ -29,6 +29,5 @@ int main(int argc, char const *argv[]) {
     displayAnim(rainbow_explosion_data, RAINBOW_EXPLOSION_FRAME_COUNT, 6);
   else if (strcmp(argv[1], "flowers") == 0)
     displayAnim(flowers_data, FLOWERS_FRAME_COUNT, 6);
-  else
-    scrollString((char *)argv[1], 1, 12);
+
 }
